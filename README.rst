@@ -1,5 +1,7 @@
-pytest-echo: echoing environment variables, package version and django settings
-===============================================================================
+pytest-echo
+===========
+
+Echoing environment variables, package version and django settings
 
 Usage
 -----
