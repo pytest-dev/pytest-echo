@@ -1,10 +1,13 @@
 pytest-echo
 ===========
 
-Echoing environment variables, package version and django settings
+Print environment variables, package version and django settings.
 
-Usage
------
+Useful in the continuous integration to dump env configuration.
+
+
+Install
+-------
 
 install via::
 
@@ -21,7 +24,7 @@ Examples
 Dump environment variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: python
+.. code-block:: sh
 
     $ py.test --echo-env=HOME
     ============================= test session starts =========================
@@ -33,7 +36,7 @@ Dump environment variables
 Dump package version
 ~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: python
+.. code-block:: sh
 
     $ py.test --echo-version=pytest_echo
     ============================= test session starts =========================
@@ -42,17 +45,19 @@ Dump package version
     plugins: echo, pydev, cov, cache, django
 
 
-Dump django settings
+Dump attributes
 ~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: python
+.. code-block:: sh
 
-    $ py.test --echo-settings=DEBUG
+    $ py.test --echo-attr=django.conf.settings.DEBUG
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     DEBUG: False
     plugins: echo, pydev, cov, cache, django
 
+.. warning:: Be careful when use ``--echo-attr``. It load any module in the path and this will 
+    execute any module's level code
 
 
 
