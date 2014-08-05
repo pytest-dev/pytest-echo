@@ -3,7 +3,7 @@ import os
 from pprint import pformat
 
 
-__version__ = '1.1'
+__version__ = '1.2'
 
 
 class RetrieveException(Exception):
