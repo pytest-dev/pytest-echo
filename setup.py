@@ -6,7 +6,7 @@ from pytest_echo import __version__
 setup(
     name='pytest-echo',
     description='pytest plugin with mechanisms for echoing environment '
-                'variables, package version and django settings',
+                'variables, package version and generic attributes',
     long_description=open("README.rst").read(),
     version=__version__,
     author='Stefano Apostolico',
