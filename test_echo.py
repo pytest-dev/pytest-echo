@@ -109,3 +109,17 @@ def test_django_settings(testdir):
     result.stdout.fnmatch_lines([
         "django.conf.settings.DEBUG: False",
     ])
+
+def test_django_settings_extended(testdir):
+    testdir.makeconftest("""
+        def pytest_configure(config):
+            import django
+            from django.conf import settings  # noqa
+            settings.configure()
+            settings.DATABASES = {'default':{ 'ENGINE': 'sqlite3'}}
+    """)
+    result = testdir.runpytest('--echo-attr=django.conf.settings.DATABASES.default.ENGINE')
+    result.stdout.fnmatch_lines([
+        "django.conf.settings.DATABASES.default.ENGINE: 'sqlite3'"
+    ])
+

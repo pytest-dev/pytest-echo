@@ -103,15 +103,18 @@ def _get_version(package_name):
 
 def pytest_report_header(config):
     ret = []
-    if config.option.echo_attribues:
-        ret.append("\n".join(["%s: %s" % (k, get_module_attribute(k))
-                              for k in config.option.echo_attribues]))
     if config.option.echo_envs:
-        ret.append("\n".join(["%s: %s" % (k, os.environ.get(k, "<not set>"))
+        ret.append("Environment:")
+        ret.append("\n".join(["    %s: %s" % (k, os.environ.get(k, "<not set>"))
                               for k in config.option.echo_envs]))
     if config.option.echo_versions:
-        ret.append("\n".join(["%s: %s" % (k, _get_version(k))
+        ret.append("Package version:")
+        ret.append("\n".join(["    %s: %s" % (k, _get_version(k))
                               for k in config.option.echo_versions]))
+    if config.option.echo_attribues:
+        ret.append("Inspections:")
+        ret.append("\n".join(["    %s: %s" % (k, get_module_attribute(k))
+                              for k in config.option.echo_attribues]))
     if ret:
         return "\n".join(ret)
 
