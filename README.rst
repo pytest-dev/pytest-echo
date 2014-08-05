@@ -46,7 +46,7 @@ Dump package version
 
 
 Dump attributes
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 .. code-block:: sh
 
