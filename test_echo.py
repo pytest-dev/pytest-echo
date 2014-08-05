@@ -1,5 +1,5 @@
 import os
-import pytest
+import sys
 import pytest_echo
 
 pytest_plugins = "pytester",
@@ -29,35 +29,37 @@ def test_version():
 def test_echo_env(testdir):
     os.environ['PYTESTECHO'] = '123'
     result = testdir.runpytest('--echo-env=PYTESTECHO')
-    assert "PYTESTECHO: 123" in result.stdout.lines
+    result.stdout.fnmatch_lines([
+        "PYTESTECHO: 123",
+    ])
 
 
 def test_echo_version(testdir):
     result = testdir.runpytest('--echo-version=pytest_echo')
-    assert "pytest_echo: %s" % pytest_echo.__version__ in result.stdout.lines
+    result.stdout.fnmatch_lines(["pytest_echo: %s" % pytest_echo.__version__])
 
 
 def test_echo_all(testdir):
     os.environ['PYTESTECHO'] = '123'
     result = testdir.runpytest('--echo-version=pytest_echo',
                                '--echo-env=PYTESTECHO')
-    assert "PYTESTECHO: 123" in result.stdout.lines
-    assert "pytest_echo: %s" % pytest_echo.__version__ in result.stdout.lines
+    result.stdout.fnmatch_lines(["PYTESTECHO: 123"])
+    result.stdout.fnmatch_lines(["pytest_echo: %s" % pytest_echo.__version__])
 
 
 def test_echo_attr(testdir):
     result = testdir.runpytest('--echo-attr=test_echo.ATTR_INT')
-    assert 'test_echo.ATTR_INT: 111' in result.stdout.lines
+    result.stdout.fnmatch_lines(['test_echo.ATTR_INT: 111'])
 
 
 def test_echo_attr_dict(testdir):
     result = testdir.runpytest('--echo-attr=test_echo.ATTR_DICT.key')
-    assert u"test_echo.ATTR_DICT.key: 'value'" in result.stdout.lines
+    result.stdout.fnmatch_lines(["test_echo.ATTR_DICT.key: 'value'"])
 
 
 def test_echo_attr_list(testdir):
     result = testdir.runpytest('--echo-attr=test_echo.ATTR_LIST.2')
-    assert u"test_echo.ATTR_LIST.2: 13" in result.stdout.lines
+    result.stdout.fnmatch_lines([u"test_echo.ATTR_LIST.2: 13"])
 
 
 def test_echo_attr_list_inner(testdir):
@@ -88,13 +90,16 @@ def test_echo_attr_object_attr(testdir):
 
 def test_echo_attr_module_object_attr(testdir):
     result = testdir.runpytest('--echo-attr=linecache.cache.__class__')
-    result.stdout.fnmatch_lines([
-        "linecache.cache.__class__: <type 'dict'>",
-    ])
+    if sys.version_info[0] == 2:
+        match = "linecache.cache.__class__: <type 'dict'>"
+    elif sys.version_info[0] == 3:
+        match = "linecache.cache.__class__: <class 'dict'>"
+
+    result.stdout.fnmatch_lines([match])
 
 
 def test_django_settings(testdir):
-    p = testdir.makeconftest("""
+    testdir.makeconftest("""
         def pytest_configure(config):
             import django
             from django.conf import settings  # noqa
