@@ -11,7 +11,7 @@ setup(
     version=__version__,
     author='Stefano Apostolico',
     author_email='s.apostolico@gmail.com',
-    url='http://bitbucket.org/hpk42/pytest-echo/',
+    url='http://pypi.python.org/pypi/pytest-echo/',
     py_modules=['pytest_echo'],
     entry_points={'pytest11': ['echo = pytest_echo']},
     install_requires=['pytest>=2.2'],
