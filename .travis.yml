@@ -1,7 +1,6 @@
 language: python
 
 python:
-  - "2.5"
   - "2.6"
   - "2.7"
   - "3.2"
@@ -10,7 +9,7 @@ python:
   - "pypy"
 
 install:
-  - "pip install ."
+  - "pip install -e ."
   - "pip install pytest django --use-mirrors"
 
 
