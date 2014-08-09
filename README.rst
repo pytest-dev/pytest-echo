@@ -11,7 +11,7 @@ pytest-echo
 
 Print environment variables, package version and generic attributes.
 
-Useful in the continuous integration to dump env configuration.
+Useful in the continuous integration to dump test configuration/environment.
 
 
 Install
@@ -28,7 +28,7 @@ The plugin provides ability to print some extra information prior to run the tes
 
 
 Example
---------
+-------
 
 Dump environment variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
