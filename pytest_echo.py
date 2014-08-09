@@ -3,7 +3,7 @@ import os
 from pprint import pformat
 
 
-__version__ = '1.2'
+__version__ = '1.3'
 
 
 class RetrieveException(Exception):
@@ -88,6 +88,13 @@ def get_module_attribute(path):
 
 
 def _get_version(package_name):
+    try:
+        import pkg_resources
+
+        return pkg_resources.require(package_name)[0].version
+    except:
+        pass
+
     try:
         pkg = __import__(package_name)
     except ImportError:
