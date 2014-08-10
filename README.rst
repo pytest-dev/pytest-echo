@@ -53,6 +53,11 @@ Dump package version
     pytest_echo: 0.1
     plugins: echo, pydev, cov, cache, django
 
+.. warning:: The first attempt to retrieve the version is done via setuptools
+    if it fails, the module is imported (``__import__(package)``) to retrieve the version reading
+    ``get_version``, ``__version__``, ``VERSION``, ``version`` so any module
+    level code is executed. This should be not an issue as no problematic code
+    should be present in the first level of the package
 
 Dump attributes
 ~~~~~~~~~~~~~~~
