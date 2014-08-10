@@ -75,7 +75,7 @@ def get_module_attribute(path):
         for i, el in enumerate(parts):
             try:
                 if parent:
-                    a = "{}.{}".format(parent, parts[i])
+                    a = "%s.%s" % (parent, parts[i])
                 else:
                     a = parts[i]
                 pkg = __import__(a, fromlist=[parent])
