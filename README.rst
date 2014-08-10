@@ -99,7 +99,7 @@ Example of use in a django project:
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Environment:
         DJANGO_SETTINGS_MODULE: tests.settings
-        PWD: /data/PROGETTI/ONU_WorldFoodProgramme/wfp-auth
+        PWD: /data/PROGETTI/sem
         VIRTUAL_ENV: /data/VENV/sem
         DBENGINE: <not set>
     Package version:
@@ -108,6 +108,10 @@ Example of use in a django project:
         pytest_echo: 1.2
     Inspections:
         django.conf.settings.DATABASES.default.ENGINE: 'django.db.backends.postgresql_psycopg2'
+    plugins: echo, cache, capturelog, contextfixture, cov, django, pydev
+    collected 14 items
+    .............
+    14 passed in 4.95 seconds
 
 Links
 ~~~~~
