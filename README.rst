@@ -85,6 +85,7 @@ Example of use in a django project:
 .. code-block:: inifile
 
     [pytest]
+    addopts =
             --tb=short
             --capture=no
             --echo-env PWD
