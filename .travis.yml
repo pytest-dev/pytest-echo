@@ -10,7 +10,9 @@ python:
 
 install:
   - "pip install -e ."
-  - "pip install pytest 'django<=1.4' --use-mirrors"
+  - "pip install pytest --use-mirrors"
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then travis_retry pip install django<=1.5; fi
+  - if [[ $TRAVIS_PYTHON_VERSION != '2.6' ]]; then travis_retry pip install django>=1.6; fi
 
 
 branches:
