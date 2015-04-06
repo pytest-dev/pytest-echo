@@ -10,7 +10,7 @@ python:
 
 install:
   - "pip install -e ."
-  - "pip install pytest django --use-mirrors"
+  - "pip install pytest 'django<=1.4' --use-mirrors"
 
 
 branches:
