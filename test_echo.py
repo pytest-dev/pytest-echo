@@ -59,19 +59,19 @@ def test_echo_attr_dict(testdir):
 
 def test_echo_attr_list(testdir):
     result = testdir.runpytest('--echo-attr=test_echo.ATTR_LIST.2')
-    result.stdout.fnmatch_lines([u"    test_echo.ATTR_LIST.2: 13"])
+    result.stdout.fnmatch_lines(["    test_echo.ATTR_LIST.2: 13"])
 
 
 def test_echo_attr_list_inner(testdir):
     result = testdir.runpytest('--echo-attr=test_echo.ATTR_LIST.3.1')
-    assert u"    test_echo.ATTR_LIST.3.1: 22" in result.stdout.lines
+    assert "    test_echo.ATTR_LIST.3.1: 22" in result.stdout.lines
 
 
 def test_echo_attr_list_composite(testdir):
     result = testdir.runpytest('--echo-attr=test_echo.ATTR_COMPOSITE.key1',
                                '--echo-attr=test_echo.ATTR_COMPOSITE.key2.3')
-    assert u"    test_echo.ATTR_COMPOSITE.key1: 'value1'" in result.stdout.lines
-    assert u"    test_echo.ATTR_COMPOSITE.key2.3: 14" in result.stdout.lines
+    assert "    test_echo.ATTR_COMPOSITE.key1: 'value1'" in result.stdout.lines
+    assert "    test_echo.ATTR_COMPOSITE.key2.3: 14" in result.stdout.lines
 
 
 def test_echo_attr_list_callable(testdir):

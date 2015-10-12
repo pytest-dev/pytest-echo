@@ -3,7 +3,7 @@ import os
 from pprint import pformat
 
 
-__version__ = '1.3'
+__version__ = '1.4'
 
 
 class RetrieveException(Exception):
@@ -72,17 +72,18 @@ def get_module_attribute(path):
     parent = ""
     pkg = None
     try:
-        for i, el in enumerate(parts):
+        for i, part in enumerate(parts):
             try:
                 if parent:
-                    a = "{}.{}".format(parent, parts[i])
+                    module_name = "%s.%s" % (parent, parts[i])
                 else:
-                    a = parts[i]
-                pkg = __import__(a, fromlist=[parent])
-                parent = a
+                    module_name = parts[i]
+                pkg = __import__(module_name, fromlist=[parent])
+                parent = module_name
             except ImportError:
-                if hasattr(pkg, el):
+                if hasattr(pkg, part):
                     return pformat(get_attr(pkg, ".".join(parts[i:])))
+        raise Exception('Unable to load %s', path)
     except Exception as e:
         return str(e)
 

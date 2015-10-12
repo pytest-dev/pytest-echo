@@ -53,6 +53,11 @@ Dump package version
     pytest_echo: 0.1
     plugins: echo, pydev, cov, cache, django
 
+.. warning:: The first attempt to retrieve the version is done via setuptools
+    if it fails, the module is imported (``__import__(package)``) to retrieve the version reading
+    ``get_version``, ``__version__``, ``VERSION``, ``version`` so any module
+    level code is executed. This should be not an issue as no problematic code
+    should be present in the first level of the package
 
 Dump attributes
 ~~~~~~~~~~~~~~~
@@ -80,6 +85,7 @@ Example of use in a django project:
 .. code-block:: inifile
 
     [pytest]
+    addopts = -vvv
             --tb=short
             --capture=no
             --echo-env PWD
@@ -99,7 +105,7 @@ Example of use in a django project:
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Environment:
         DJANGO_SETTINGS_MODULE: tests.settings
-        PWD: /data/PROGETTI/ONU_WorldFoodProgramme/wfp-auth
+        PWD: /data/PROGETTI/sem
         VIRTUAL_ENV: /data/VENV/sem
         DBENGINE: <not set>
     Package version:
@@ -108,6 +114,10 @@ Example of use in a django project:
         pytest_echo: 1.2
     Inspections:
         django.conf.settings.DATABASES.default.ENGINE: 'django.db.backends.postgresql_psycopg2'
+    plugins: echo, cache, capturelog, contextfixture, cov, django, pydev
+    collected 14 items
+    .............
+    14 passed in 4.95 seconds
 
 Links
 ~~~~~
