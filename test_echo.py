@@ -1,5 +1,8 @@
 import os
 import sys
+
+import pytest
+
 import pytest_echo
 
 pytest_plugins = "pytester",
@@ -99,6 +102,8 @@ def test_echo_attr_module_object_attr(testdir):
 
 
 def test_django_settings(testdir):
+
+    pytest.importorskip("django")
     testdir.makeconftest("""
         def pytest_configure(config):
             import django
@@ -111,6 +116,7 @@ def test_django_settings(testdir):
     ])
 
 def test_django_settings_extended(testdir):
+    pytest.importorskip("django")
     testdir.makeconftest("""
         def pytest_configure(config):
             import django

@@ -9,10 +9,12 @@ pytest-echo
    :target: https://crate.io/packages/pytest-echo/
 
 
-Print environment variables, package version and generic attributes.
+Print environment variables, package version and generic attributes,
+as they are at the begining of the test.
 
-Useful in the continuous integration to dump test configuration/environment.
-
+Useful in the continuous integration to dump test
+configuration/environment and or to check is attributes are properly set
+(ie. you change environment with `os.environ`)
 
 Install
 -------
