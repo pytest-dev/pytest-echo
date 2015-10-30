@@ -1,4 +1,5 @@
 language: python
+sudo: false
 
 python:
   - "2.6"
@@ -6,18 +7,27 @@ python:
   - "3.2"
   - "3.3"
   - "3.4"
+  - "3.5"
   - "pypy"
 
 install:
   - pip install .
-  - pip install pytest --use-mirrors
+  - pip install tox pytest>=2.8.2
   - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then travis_retry pip install 'django<1.5'; fi
   - if [[ $TRAVIS_PYTHON_VERSION != '2.6' ]]; then travis_retry pip install 'django>=1.6'; fi
+  - "TOX_ENV=${TRAVIS_PYTHON_VERSION/[0-9].[0-9]/py${TRAVIS_PYTHON_VERSION/.}}"
 
 
 branches:
   only:
     - develop
+    - feature/travis
 
-script:
-  py.test
+script: tox -e $TOX_ENV
+
+before_cache:
+  - rm -rf $HOME/.cache/pip/log
+
+cache:
+  directories:
+    - $HOME/.cache/pip
