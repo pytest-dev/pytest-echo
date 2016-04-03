@@ -124,12 +124,12 @@ Example of use in a django project:
 Links
 ~~~~~
 
-+--------------------+----------------+--------------+----------------+
-| Project home page: |https://github.com/saxix/pytest-echo            |
-+--------------------+---------------+--------------------------------+
-| Issue tracker:     |https://github.com/saxix/pytest-echo/issues?sort|
-+--------------------+---------------+--------------------------------+
-| Download:          |http://pypi.python.org/pypi/pytest-echo/        |
-+--------------------+---------------+--------------------------------+
-| Documentation:     |https://pytest-echo.readthedocs.org/en/latest/  |
-+--------------------+---------------+--------------+-----------------+
++--------------------+-------------------------------------------------+
+| Project home page: |https://github.com/saxix/pytest-echo             |
++--------------------+-------------------------------------------------+
+| Issue tracker:     |https://github.com/saxix/pytest-echo/issues?sort |
++--------------------+-------------------------------------------------+
+| Download:          |http://pypi.python.org/pypi/pytest-echo/         |
++--------------------+-------------------------------------------------+
+| Documentation:     |https://pytest-echo.readthedocs.org/en/latest/   |
++--------------------+-------------------------------------------------+
