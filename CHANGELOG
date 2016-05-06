@@ -1,3 +1,8 @@
+1.5 (dev)
+---------
+* dropped python 3.3 support
+* add python 3.5 suport
+
 1.4
 ---
 * fixes typo in documentation
