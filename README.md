@@ -1,9 +1,7 @@
 pytest-echo
 ===========
 
-
-.. image:: https://pypip.in/v/pytest-echo/badge.png
-   :target: https://crate.io/packages/pytest-echo/
+(https://pypip.in/v/pytest-echo/badge.png)[`target: https://crate.io/packages/pytest-echo/`]
 
 .. image:: https://pypip.in/d/pytest-echo/badge.png
    :target: https://crate.io/packages/pytest-echo/
@@ -72,8 +70,8 @@ Dump attributes
     DEBUG: False
     plugins: echo, pydev, cov, cache, django
 
-.. warning:: Be careful when use ``--echo-attr``. It load any module in the path and this will
-    execute any module's level code
+.. warning:: Be careful when use ``--echo-attr``. It loads any module in the path and this will
+    execute any module level code
     If you try to dump a property, related ``getter`` will be executed.
 
 .. note:: You cannot dump callable result.
