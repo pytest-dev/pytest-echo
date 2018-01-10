@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+import fnmatch
 import os
 from pprint import pformat
 
+import pip
 
-__version__ = '1.4'
+__version__ = '1.5'
 
 
 class RetrieveException(Exception):
@@ -88,6 +90,28 @@ def get_module_attribute(path):
         return str(e)
 
 
+def get_env(var_name):
+    if '*' in var_name:
+        targets = [(key, value)
+                   for key, value in os.environ.items()
+                   if fnmatch.fnmatch(key, var_name)]
+    else:
+        targets = [(var_name, os.environ.get(var_name, "<not set>"))]
+
+    return targets
+
+
+def get_version(package_name):
+    if '*' in package_name:
+        targets = [(i.key, i.version)
+                   for i in pip.get_installed_distributions()
+                   if fnmatch.fnmatch(i.key, package_name)]
+    else:
+        targets = [(package_name, _get_version(package_name))]
+
+    return targets
+
+
 def _get_version(package_name):
     try:
         import pkg_resources
@@ -113,12 +137,22 @@ def pytest_report_header(config):
     ret = []
     if config.option.echo_envs:
         ret.append("Environment:")
-        ret.append("\n".join(["    %s: %s" % (k, os.environ.get(k, "<not set>"))
-                              for k in config.option.echo_envs]))
+        data = []
+        for k in config.option.echo_envs:
+            data.extend(get_env(k))
+        ret.append("\n".join(["    %s: %s" % (k, v)
+                              for k,v in sorted(data)]))
+
+        # ret.append("\n".join(["    %s: %s" % (k, os.environ.get(k, "<not set>"))
+        #                       for k in config.option.echo_envs]))
     if config.option.echo_versions:
         ret.append("Package version:")
-        ret.append("\n".join(["    %s: %s" % (k, _get_version(k))
-                              for k in config.option.echo_versions]))
+        data = []
+        for k in config.option.echo_versions:
+            data.extend(get_version(k))
+        ret.append("\n".join(["    %s: %s" % (k, v)
+                              for k,v in sorted(data)]))
+
     if config.option.echo_attribues:
         ret.append("Inspections:")
         ret.append("\n".join(["    %s: %s" % (k, get_module_attribute(k))

@@ -1,5 +1,6 @@
 import os
 import sys
+from contextlib import contextmanager
 
 import pytest
 
@@ -29,17 +30,53 @@ def test_version():
     assert pytest_echo.__version__
 
 
+@contextmanager
+def env(**kwargs):
+    backup = {}
+    for k, v in kwargs.items():
+        if k in os.environ:
+            backup[k] = v
+        os.environ[k] = v
+    yield
+    for k, v in kwargs.items():
+        if k in backup:
+            os.environ[k] = backup[k]
+        else:
+            del os.environ[k]
+
+
 def test_echo_env(testdir):
-    os.environ['PYTESTECHO'] = '123'
-    result = testdir.runpytest('--echo-env=PYTESTECHO')
-    result.stdout.fnmatch_lines([
-        "    PYTESTECHO: 123"
-    ])
+    # os.environ['PYTESTECHO'] = '123'
+    with env(PYTESTECHO='123'):
+        result = testdir.runpytest('--echo-env=PYTESTECHO')
+        result.stdout.fnmatch_lines([
+            "    PYTESTECHO: 123"
+        ])
+
+
+def test_echo_env_glob(testdir):
+    # os.environ['PYTESTECHO-a'] = '1'
+    # os.environ['PYTESTECHO-b'] = '2'
+    with env(**{'PYTESTECHO-a': '1', 'PYTESTECHO-b': '2'}):
+        result = testdir.runpytest('--echo-env=PYTESTECHO*')
+        result.stdout.fnmatch_lines([
+            "    PYTESTECHO-a: 1",
+            "    PYTESTECHO-b: 2"
+        ])
 
 
 def test_echo_version(testdir):
-    result = testdir.runpytest('--echo-version=pytest_echo')
-    result.stdout.fnmatch_lines(["    pytest_echo: %s" % pytest_echo.__version__])
+    result = testdir.runpytest('--echo-version=pytest-echo')
+    result.stdout.fnmatch_lines(["    pytest-echo: %s" % pytest_echo.__version__])
+
+
+def test_echo_version_glob(testdir):
+    result = testdir.runpytest('--echo-version=pytest*')
+    result.stdout.fnmatch_lines(["    pytest: %s" % pytest.__version__,
+                                 "    pytest-echo: %s" % pytest_echo.__version__,
+                                 ])
+    # result.stdout.fnmatch_lines(["    pytest-echo: %s" % pytest_echo.__version__])
+    # result.stdout.fnmatch_lines(["    pytest: %s" % pytest.__version__])
 
 
 def test_echo_all(testdir):
@@ -102,7 +139,6 @@ def test_echo_attr_module_object_attr(testdir):
 
 
 def test_django_settings(testdir):
-
     pytest.importorskip("django")
     testdir.makeconftest("""
         def pytest_configure(config):
@@ -114,6 +150,7 @@ def test_django_settings(testdir):
     result.stdout.fnmatch_lines([
         "    django.conf.settings.DEBUG: False",
     ])
+
 
 def test_django_settings_extended(testdir):
     pytest.importorskip("django")
@@ -128,4 +165,3 @@ def test_django_settings_extended(testdir):
     result.stdout.fnmatch_lines([
         "    django.conf.settings.DATABASES.default.ENGINE: 'sqlite3'"
     ])
-
