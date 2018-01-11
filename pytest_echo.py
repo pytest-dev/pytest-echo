@@ -7,7 +7,7 @@ from pprint import pformat
 import pip
 from pkg_resources import DistributionNotFound
 
-__version__ = '1.5'
+__version__ = '1.5.1'
 
 
 def get_attr(obj, attr, default='NOT FOUND'):
