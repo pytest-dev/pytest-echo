@@ -1,5 +1,7 @@
+===========
 pytest-echo
 ===========
+
 
 .. image:: https://badge.fury.io/py/pytest-echo.svg
    :target: http://badge.fury.io/py/pytest-echo
@@ -15,7 +17,7 @@ configuration/environment and or to check is attributes are properly set
 
 
 Install
--------
+=======
 
 install via::
 
@@ -28,10 +30,10 @@ The plugin provides ability to print some extra information prior to run the tes
 
 
 Examples
---------
+========
 
 Dump environment variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 .. code-block:: sh
 
@@ -43,7 +45,7 @@ Dump environment variables
 
 
 Dump package version
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 .. code-block:: sh
 
@@ -60,7 +62,7 @@ Dump package version
     should be present in the first level of the package
 
 Dump attributes
-~~~~~~~~~~~~~~~
+---------------
 
 .. code-block:: sh
 
@@ -78,7 +80,7 @@ Dump attributes
 
 
 Configure via tox.ini/setup.cfg/pytest.cfg
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------
 
 Example of use in a django project:
 
@@ -121,7 +123,7 @@ Example of use in a django project:
 
 
 Globbing
-~~~~~~~~
+--------
 
 Starting from version 1.5, is possible to glob packages version and environment variables,
 as:
@@ -143,7 +145,7 @@ or
 
 
 Links
-~~~~~
+-----
 
 +--------------------+----------------+--------------+-----------------+
 | Stable             | |master-build| | |master-cov| | |master-doc|    |
