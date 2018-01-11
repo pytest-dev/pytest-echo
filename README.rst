@@ -13,6 +13,7 @@ Useful in the continuous integration to dump test
 configuration/environment and or to check is attributes are properly set
 (ie. you change environment with `os.environ`)
 
+
 Install
 -------
 
@@ -26,8 +27,8 @@ The plugin provides ability to print some extra information prior to run the tes
 
 
 
-Example
--------
+Examples
+--------
 
 Dump environment variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
