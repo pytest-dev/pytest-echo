@@ -164,7 +164,7 @@ Links
 | Download:          | http://pypi.python.org/pypi/pytest-echo/         |
 +--------------------+--------------------------------------------------+
 | Documentation:     | https://pytest-echo.readthedocs.org/en/latest/   |
-+--------------------+-------------------------------------------------+
++--------------------+--------------------------------------------------+
 
 
 .. |master-build| image:: https://secure.travis-ci.org/saxix/pytest-echo.png?branch=master
