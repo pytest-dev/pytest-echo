@@ -11,9 +11,7 @@ python:
 
 install:
   - pip install .
-  - pip install tox pytest>=2.8.2
-  - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then travis_retry pip install 'django<1.5'; fi
-  - if [[ $TRAVIS_PYTHON_VERSION != '2.6' ]]; then travis_retry pip install 'django>=1.6'; fi
+  - pip install tox
   - "TOX_ENV=${TRAVIS_PYTHON_VERSION/[0-9].[0-9]/py${TRAVIS_PYTHON_VERSION/.}}"
 
 

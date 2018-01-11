@@ -1,10 +1,22 @@
 pytest-echo
 ===========
 
-(https://pypip.in/v/pytest-echo/badge.png)[`target: https://crate.io/packages/pytest-echo/`]
+.. image:: https://badge.fury.io/py/pytest-echo.svg
+   :target: http://badge.fury.io/py/pytest-echo
+   :alt: PyPI package
 
-.. image:: https://pypip.in/d/pytest-echo/badge.png
-   :target: https://crate.io/packages/pytest-echo/
+.. image:: https://travis-ci.org/saxix/pytest-echo.svg?branch=master
+   :target: https://travis-ci.org/saxix/pytest-echo
+   :alt: Travis CI build status (Linux)
+
+.. image:: https://codecov.io/github/saxix/pytest-echo/coverage.svg?branch=master
+   :target: https://codecov.io/github/saxix/pytest-echo?branch=master
+   :alt: Code Coverage
+
+
+.. image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
+   :target: https://readthedocs.org/projects/pytest-echo/?badge=latest
+   :alt: Documentation Status
 
 
 Print environment variables, package version and generic attributes,
@@ -126,6 +138,8 @@ Links
 | Project home page: |https://github.com/saxix/pytest-echo             |
 +--------------------+-------------------------------------------------+
 | Issue tracker:     |https://github.com/saxix/pytest-echo/issues?sort |
++--------------------+-------------------------------------------------+
+| CI:                |https://travis-ci.org/saxix/pytest-echo          |
 +--------------------+-------------------------------------------------+
 | Download:          |http://pypi.python.org/pypi/pytest-echo/         |
 +--------------------+-------------------------------------------------+
