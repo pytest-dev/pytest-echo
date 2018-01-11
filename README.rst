@@ -150,20 +150,20 @@ or
 Links
 -----
 
-+--------------------+----------------+--------------+-----------------+
-| Stable             | |master-build| | |master-cov| | |master-doc|    |
-+--------------------+----------------+--------------+-----------------+
-| Development        | |dev-build|    | |dev-cov|    | |dev-doc|       |
-+--------------------+-------------------------------------------------+
-| Project home page: |https://github.com/saxix/pytest-echo             |
-+--------------------+-------------------------------------------------+
-| Issue tracker:     |https://github.com/saxix/pytest-echo/issues?sort |
-+--------------------+-------------------------------------------------+
-| CI:                |https://travis-ci.org/saxix/pytest-echo          |
-+--------------------+-------------------------------------------------+
-| Download:          |http://pypi.python.org/pypi/pytest-echo/         |
-+--------------------+-------------------------------------------------+
-| Documentation:     |https://pytest-echo.readthedocs.org/en/latest/   |
++--------------------+-----------------+---------------+----------------+
+| Stable             |  |master-build| |  |master-cov| |  |master-doc|  |
++--------------------+-----------------+---------------+----------------+
+| Development        |  |dev-build|    |  |dev-cov|    |  |dev-doc|     |
++--------------------+--------------------------------------------------+
+| Project home page: | https://github.com/saxix/pytest-echo             |
++--------------------+--------------------------------------------------+
+| Issue tracker:     | https://github.com/saxix/pytest-echo/issues?sort |
++--------------------+--------------------------------------------------+
+| CI:                | https://travis-ci.org/saxix/pytest-echo          |
++--------------------+--------------------------------------------------+
+| Download:          | http://pypi.python.org/pypi/pytest-echo/         |
++--------------------+--------------------------------------------------+
+| Documentation:     | https://pytest-echo.readthedocs.org/en/latest/   |
 +--------------------+-------------------------------------------------+
 
 
@@ -180,8 +180,8 @@ Links
                   :target: http://travis-ci.org/saxix/pytest-echo/
 
 .. |dev-cov| image:: https://codecov.io/gh/saxix/pytest-echo/branch/develop/graph/badge.svg
-                    :target: https://codecov.io/gh/saxix/pytest-echo
+                :target: https://codecov.io/gh/saxix/pytest-echo
 
 .. |dev-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
-                    :target: http://pytest-echo.readthedocs.io/en/latest/
+                :target: http://pytest-echo.readthedocs.io/en/latest/
 
