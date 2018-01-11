@@ -1,23 +1,34 @@
 language: python
+sudo: false
 
 python:
   - "2.6"
   - "2.7"
-  - "3.2"
   - "3.3"
   - "3.4"
+  - "3.5"
+  - "3.6"
   - "pypy"
 
 install:
-  - "pip install -e ."
-  - "pip install pytest --use-mirrors"
-  - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then travis_retry pip install 'django<1.5'; fi
-  - if [[ $TRAVIS_PYTHON_VERSION != '2.6' ]]; then travis_retry pip install 'django>=1.6'; fi
+  - pip install .
+  - pip install tox coverage codecov
+  - "TOX_ENV=${TRAVIS_PYTHON_VERSION/[0-9].[0-9]/py${TRAVIS_PYTHON_VERSION/.}}"
 
 
 branches:
   only:
+    - master
     - develop
+    - feature/travis
 
-script:
-  py.test
+
+before_success:
+  - coverage erase
+
+
+after_success:
+  - coverage combine
+  - codecov
+
+script: tox -e $TOX_ENV

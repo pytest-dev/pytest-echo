@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
+import fnmatch
 import os
 from pprint import pformat
 
+import pip
+from pkg_resources import DistributionNotFound
 
-__version__ = '1.4'
-
-
-class RetrieveException(Exception):
-    pass
+__version__ = '1.5'
 
 
 def get_attr(obj, attr, default='NOT FOUND'):
     """Recursive get object's attribute. May use dot notation.
 
-    >>> class C(object): pass
+    >>> class C(object):
+    ...     pass
     >>> a = C()
     >>> a.b = C()
     >>> a.b.c = 4
@@ -44,7 +44,7 @@ def get_attr(obj, attr, default='NOT FOUND'):
                 return obj[attr]
             else:
                 return default
-        except Exception as e:
+        except Exception as e:  # pragma: no cover
             return str(e)
     else:
         L = attr.split('.')
@@ -67,6 +67,8 @@ def get_module_attribute(path):
     <type 'dict'>
     >>> print get_module_attribute('os.path.curdir')
     '.'
+    >>> print get_module_attribute('wrong')
+    ('Unable to load %s', 'wrong')
     """
     parts = path.split('.')
     parent = ""
@@ -88,12 +90,34 @@ def get_module_attribute(path):
         return str(e)
 
 
+def get_env(var_name):
+    if '*' in var_name:
+        targets = [(key, value)
+                   for key, value in os.environ.items()
+                   if fnmatch.fnmatch(key, var_name)]
+    else:
+        targets = [(var_name, os.environ.get(var_name, "<not set>"))]
+
+    return targets
+
+
+def get_version(package_name):
+    if '*' in package_name:
+        targets = [(i.key, i.version)
+                   for i in pip.get_installed_distributions()
+                   if fnmatch.fnmatch(i.key, package_name)]
+    else:
+        targets = [(package_name, _get_version(package_name))]
+
+    return targets
+
+
 def _get_version(package_name):
     try:
         import pkg_resources
 
         return pkg_resources.require(package_name)[0].version
-    except:
+    except (ImportError, AttributeError, TypeError, DistributionNotFound):
         pass
 
     try:
@@ -113,12 +137,20 @@ def pytest_report_header(config):
     ret = []
     if config.option.echo_envs:
         ret.append("Environment:")
-        ret.append("\n".join(["    %s: %s" % (k, os.environ.get(k, "<not set>"))
-                              for k in config.option.echo_envs]))
+        data = []
+        for k in config.option.echo_envs:
+            data.extend(get_env(k))
+        ret.append("\n".join(["    %s: %s" % (k, v)
+                              for k, v in sorted(data)]))
+
     if config.option.echo_versions:
         ret.append("Package version:")
-        ret.append("\n".join(["    %s: %s" % (k, _get_version(k))
-                              for k in config.option.echo_versions]))
+        data = []
+        for k in config.option.echo_versions:
+            data.extend(get_version(k))
+        ret.append("\n".join(["    %s: %s" % (k, v)
+                              for k, v in sorted(data)]))
+
     if config.option.echo_attribues:
         ret.append("Inspections:")
         ret.append("\n".join(["    %s: %s" % (k, get_module_attribute(k))
