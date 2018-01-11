@@ -5,10 +5,6 @@ pytest-echo
    :target: http://badge.fury.io/py/pytest-echo
    :alt: PyPI package
 
-.. image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
-   :target: https://readthedocs.org/projects/pytest-echo/?badge=latest
-   :alt: Documentation Status
-
 
 Print environment variables, package version and generic attributes,
 as they are at the begining of the test.
@@ -148,7 +144,7 @@ Links
 .. |master-cov| image:: https://codecov.io/gh/saxix/pytest-echo/branch/master/graph/badge.svg
                     :target: https://codecov.io/gh/saxix/pytest-echo
 
-.. |master-doc| image:: http://pytest-echo.readthedocs.io/en/latest/?badge=stable
+.. |master-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=stable
                     :target: http://pytest-echo.readthedocs.io/en/stable/
 
 .. |dev-build| image:: https://secure.travis-ci.org/saxix/pytest-echo.png?branch=develop
@@ -157,7 +153,6 @@ Links
 .. |dev-cov| image:: https://codecov.io/gh/saxix/pytest-echo/branch/develop/graph/badge.svg
                     :target: https://codecov.io/gh/saxix/pytest-echo
 
-.. |dev-doc| image:: http://pytest-echo.readthedocs.io/en/latest/?badge=latest
+.. |dev-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
                     :target: http://pytest-echo.readthedocs.io/en/latest/
-
 
