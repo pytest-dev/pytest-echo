@@ -154,7 +154,7 @@ Links
 | Stable             |  |master-build| |  |master-cov| |  |master-doc|  |
 +--------------------+-----------------+---------------+----------------+
 | Development        |  |dev-build|    |  |dev-cov|    |  |dev-doc|     |
-+--------------------+--------------------------------------------------+
++--------------------+-----------------+---------------+----------------+
 | Project home page: | https://github.com/saxix/pytest-echo             |
 +--------------------+--------------------------------------------------+
 | Issue tracker:     | https://github.com/saxix/pytest-echo/issues?sort |
