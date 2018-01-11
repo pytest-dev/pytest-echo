@@ -5,15 +5,6 @@ pytest-echo
    :target: http://badge.fury.io/py/pytest-echo
    :alt: PyPI package
 
-.. image:: https://travis-ci.org/saxix/pytest-echo.svg?branch=master
-   :target: https://travis-ci.org/saxix/pytest-echo
-   :alt: Travis CI build status (Linux)
-
-.. image:: https://codecov.io/github/saxix/pytest-echo/coverage.svg?branch=master
-   :target: https://codecov.io/github/saxix/pytest-echo?branch=master
-   :alt: Code Coverage
-
-
 .. image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
    :target: https://readthedocs.org/projects/pytest-echo/?badge=latest
    :alt: Documentation Status
@@ -134,6 +125,10 @@ Example of use in a django project:
 Links
 ~~~~~
 
++--------------------+----------------+--------------+-----------------+
+| Stable             | |master-build| | |master-cov| | |master-doc|    |
++--------------------+----------------+--------------+-----------------+
+| Development        | |dev-build|    | |dev-cov|    | |dev-doc|       |
 +--------------------+-------------------------------------------------+
 | Project home page: |https://github.com/saxix/pytest-echo             |
 +--------------------+-------------------------------------------------+
@@ -145,3 +140,24 @@ Links
 +--------------------+-------------------------------------------------+
 | Documentation:     |https://pytest-echo.readthedocs.org/en/latest/   |
 +--------------------+-------------------------------------------------+
+
+
+.. |master-build| image:: https://secure.travis-ci.org/saxix/pytest-echo.png?branch=master
+                    :target: http://travis-ci.org/saxix/pytest-echo/
+
+.. |master-cov| image:: https://codecov.io/gh/saxix/pytest-echo/branch/master/graph/badge.svg
+                    :target: https://codecov.io/gh/saxix/pytest-echo
+
+.. |master-doc| image:: http://pytest-echo.readthedocs.io/en/latest/?badge=stable
+                    :target: http://pytest-echo.readthedocs.io/en/stable/
+
+.. |dev-build| image:: https://secure.travis-ci.org/saxix/pytest-echo.png?branch=develop
+                  :target: http://travis-ci.org/saxix/pytest-echo/
+
+.. |dev-cov| image:: https://codecov.io/gh/saxix/pytest-echo/branch/develop/graph/badge.svg
+                    :target: https://codecov.io/gh/saxix/pytest-echo
+
+.. |dev-doc| image:: http://pytest-echo.readthedocs.io/en/latest/?badge=latest
+                    :target: http://pytest-echo.readthedocs.io/en/latest/
+
+

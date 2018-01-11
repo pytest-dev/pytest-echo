@@ -1,7 +1,6 @@
 1.5 (dev)
 ---------
 * add support for 'globbing' package version and enviromnent variables
-* dropped python 2.6 support
 * add python 3.5 and 3.6 support
 
 1.4
