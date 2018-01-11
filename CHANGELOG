@@ -1,5 +1,5 @@
-1.5 (dev)
----------
+1.5
+---
 * add support for 'globbing' package version and enviromnent variables
 * add python 3.5 and 3.6 support
 
