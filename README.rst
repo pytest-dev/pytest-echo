@@ -1,5 +1,7 @@
+===========
 pytest-echo
 ===========
+
 
 .. image:: https://badge.fury.io/py/pytest-echo.svg
    :target: http://badge.fury.io/py/pytest-echo
@@ -13,8 +15,9 @@ Useful in the continuous integration to dump test
 configuration/environment and or to check is attributes are properly set
 (ie. you change environment with `os.environ`)
 
+
 Install
--------
+=======
 
 install via::
 
@@ -26,30 +29,32 @@ The plugin provides ability to print some extra information prior to run the tes
 
 
 
-Example
--------
+Examples
+========
 
 Dump environment variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 .. code-block:: sh
 
     $ py.test --echo-env=HOME
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
-    HOME: /home/sax
+    Environment:
+        HOME: /Users/sax
     plugins: echo, pydev, cov, cache, django
 
 
 Dump package version
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 .. code-block:: sh
 
     $ py.test --echo-version=pytest_echo
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
-    pytest_echo: 0.1
+    Package version:
+        pytest_echo: 0.1
     plugins: echo, pydev, cov, cache, django
 
 .. warning:: The first attempt to retrieve the version is done via setuptools
@@ -59,14 +64,15 @@ Dump package version
     should be present in the first level of the package
 
 Dump attributes
-~~~~~~~~~~~~~~~
+---------------
 
 .. code-block:: sh
 
     $ py.test --echo-attr=django.conf.settings.DEBUG
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
-    DEBUG: False
+    Inspections
+        django.conf.settings.DEBUG: False
     plugins: echo, pydev, cov, cache, django
 
 .. warning:: Be careful when use ``--echo-attr``. It loads any module in the path and this will
@@ -77,7 +83,7 @@ Dump attributes
 
 
 Configure via tox.ini/setup.cfg/pytest.cfg
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------
 
 Example of use in a django project:
 
@@ -120,7 +126,7 @@ Example of use in a django project:
 
 
 Globbing
-~~~~~~~~
+--------
 
 Starting from version 1.5, is possible to glob packages version and environment variables,
 as:
@@ -142,7 +148,7 @@ or
 
 
 Links
-~~~~~
+-----
 
 +--------------------+----------------+--------------+-----------------+
 | Stable             | |master-build| | |master-cov| | |master-doc|    |

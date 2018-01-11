@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 import fnmatch
 import os
 from pprint import pformat
@@ -6,7 +7,7 @@ from pprint import pformat
 import pip
 from pkg_resources import DistributionNotFound
 
-__version__ = '1.5'
+__version__ = '1.5.1'
 
 
 def get_attr(obj, attr, default='NOT FOUND'):
@@ -63,11 +64,11 @@ def get_module_attribute(path):
     :param path: full path to the attribute
     :return:
 
-    >>> print get_module_attribute('linecache.cache.__class__')
-    <type 'dict'>
-    >>> print get_module_attribute('os.path.curdir')
+    >>> print(get_module_attribute('linecache.cache.__class__'))
+    <... 'dict'>
+    >>> print(get_module_attribute('os.path.curdir'))
     '.'
-    >>> print get_module_attribute('wrong')
+    >>> print(get_module_attribute('wrong'))
     ('Unable to load %s', 'wrong')
     """
     parts = path.split('.')
