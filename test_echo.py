@@ -2,6 +2,7 @@ import os
 import sys
 from contextlib import contextmanager
 
+import django
 import pytest
 
 import pytest_echo
@@ -46,7 +47,6 @@ def env(**kwargs):
 
 
 def test_echo_env(testdir):
-    # os.environ['PYTESTECHO'] = '123'
     with env(PYTESTECHO='123'):
         result = testdir.runpytest('--echo-env=PYTESTECHO')
         result.stdout.fnmatch_lines([
@@ -55,8 +55,6 @@ def test_echo_env(testdir):
 
 
 def test_echo_env_glob(testdir):
-    # os.environ['PYTESTECHO-a'] = '1'
-    # os.environ['PYTESTECHO-b'] = '2'
     with env(**{'PYTESTECHO-a': '1', 'PYTESTECHO-b': '2'}):
         result = testdir.runpytest('--echo-env=PYTESTECHO*')
         result.stdout.fnmatch_lines([
@@ -70,13 +68,23 @@ def test_echo_version(testdir):
     result.stdout.fnmatch_lines(["    pytest-echo: %s" % pytest_echo.__version__])
 
 
+def test_echo_version_missing(testdir):
+    result = testdir.runpytest('--echo-version=missing-package')
+    result.stdout.fnmatch_lines(["    missing-package: <unable to load package>"])
+
+
+def test_echo_version_no_setuptools(testdir, monkeypatch):
+    monkeypatch.setattr("pkg_resources.require", None)
+    result = testdir.runpytest('--echo-version=pytest', '--echo-version=django')
+    result.stdout.fnmatch_lines(["    pytest: %s" % pytest.__version__])
+    result.stdout.fnmatch_lines(["    django: %s" % django.get_version()])
+
+
 def test_echo_version_glob(testdir):
     result = testdir.runpytest('--echo-version=pytest*')
     result.stdout.fnmatch_lines(["    pytest: %s" % pytest.__version__,
                                  "    pytest-echo: %s" % pytest_echo.__version__,
                                  ])
-    # result.stdout.fnmatch_lines(["    pytest-echo: %s" % pytest_echo.__version__])
-    # result.stdout.fnmatch_lines(["    pytest: %s" % pytest.__version__])
 
 
 def test_echo_all(testdir):
