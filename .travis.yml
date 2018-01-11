@@ -2,7 +2,6 @@ language: python
 sudo: false
 
 python:
-  - "2.6"
   - "2.7"
   - "3.3"
   - "3.4"
@@ -12,7 +11,7 @@ python:
 
 install:
   - pip install .
-  - pip install tox coverage codecov
+  - pip install tox codecov
   - "TOX_ENV=${TRAVIS_PYTHON_VERSION/[0-9].[0-9]/py${TRAVIS_PYTHON_VERSION/.}}"
 
 
