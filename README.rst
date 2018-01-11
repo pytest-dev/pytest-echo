@@ -92,7 +92,7 @@ Example of use in a django project:
             --echo-env DBENGINE
             --echo-version django
             --echo-version pip
-            --echo-version pytest_echo
+            --echo-version pytest-echo
             --echo-attr django.conf.settings.DATABASES.default.ENGINE
 
 
@@ -117,6 +117,29 @@ Example of use in a django project:
     collected 14 items
     .............
     14 passed in 4.95 seconds
+
+
+Globbing
+~~~~~~~~
+
+Starting from version 1.5, is possible to glob packages version and environment variables,
+as:
+
+.. code-block:: sh
+
+    $ py.test --echo-version=pytest-* --echo-env=VIRTUAL*
+
+or
+
+.. code-block:: inifile
+
+    [pytest]
+    addopts = -vvv
+            --echo-env VIRTUAL*
+            --echo-version pytest-*
+
+
+
 
 Links
 ~~~~~
