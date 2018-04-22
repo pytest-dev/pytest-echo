@@ -7,3 +7,6 @@ clean:
 fullclean: clean
 	rm -fr .tox .cache .pytest_cache
 	find . -name '*.pyc' -exec rm -f {} +
+
+release:
+	python setup.py sdist bdist_wheel
