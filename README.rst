@@ -12,7 +12,7 @@ Print environment variables, package version and generic attributes,
 as they are at the begining of the test.
 
 Useful in the continuous integration to dump test
-configuration/environment and or to check is attributes are properly set
+configuration/environment and or to check if attributes are properly set
 (ie. you change environment with `os.environ`)
 
 
@@ -22,10 +22,6 @@ Install
 install via::
 
     pip install pytest-echo
-
-
-
-The plugin provides ability to print some extra information prior to run the tests.
 
 
 
@@ -56,6 +52,7 @@ Dump package version
     Package version:
         pytest_echo: 0.1
     plugins: echo, pydev, cov, cache, django
+
 
 .. warning:: The first attempt to retrieve the version is done via setuptools
     if it fails, the module is imported (``__import__(package)``) to retrieve the version reading
@@ -150,21 +147,21 @@ or
 Links
 -----
 
-+--------------------+----------------+--------------+-----------------+
-| Stable             | |master-build| | |master-cov| | |master-doc|    |
-+--------------------+----------------+--------------+-----------------+
-| Development        | |dev-build|    | |dev-cov|    | |dev-doc|       |
-+--------------------+-------------------------------------------------+
-| Project home page: |https://github.com/saxix/pytest-echo             |
-+--------------------+-------------------------------------------------+
-| Issue tracker:     |https://github.com/saxix/pytest-echo/issues?sort |
-+--------------------+-------------------------------------------------+
-| CI:                |https://travis-ci.org/saxix/pytest-echo          |
-+--------------------+-------------------------------------------------+
-| Download:          |http://pypi.python.org/pypi/pytest-echo/         |
-+--------------------+-------------------------------------------------+
-| Documentation:     |https://pytest-echo.readthedocs.org/en/latest/   |
-+--------------------+-------------------------------------------------+
++--------------------+-----------------+---------------+----------------+
+| Stable             |  |master-build| |  |master-cov| |  |master-doc|  |
++--------------------+-----------------+---------------+----------------+
+| Development        |  |dev-build|    |  |dev-cov|    |  |dev-doc|     |
++--------------------+-----------------+---------------+----------------+
+| Project home page: | https://github.com/saxix/pytest-echo             |
++--------------------+--------------------------------------------------+
+| Issue tracker:     | https://github.com/saxix/pytest-echo/issues?sort |
++--------------------+--------------------------------------------------+
+| CI:                | https://travis-ci.org/saxix/pytest-echo          |
++--------------------+--------------------------------------------------+
+| Download:          | http://pypi.python.org/pypi/pytest-echo/         |
++--------------------+--------------------------------------------------+
+| Documentation:     | https://pytest-echo.readthedocs.org/en/latest/   |
++--------------------+--------------------------------------------------+
 
 
 .. |master-build| image:: https://secure.travis-ci.org/saxix/pytest-echo.png?branch=master
@@ -180,8 +177,8 @@ Links
                   :target: http://travis-ci.org/saxix/pytest-echo/
 
 .. |dev-cov| image:: https://codecov.io/gh/saxix/pytest-echo/branch/develop/graph/badge.svg
-                    :target: https://codecov.io/gh/saxix/pytest-echo
+                :target: https://codecov.io/gh/saxix/pytest-echo
 
 .. |dev-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
-                    :target: http://pytest-echo.readthedocs.io/en/latest/
+                :target: http://pytest-echo.readthedocs.io/en/latest/
 
