@@ -12,7 +12,7 @@ Print environment variables, package version and generic attributes,
 as they are at the begining of the test.
 
 Useful in the continuous integration to dump test
-configuration/environment and or to check is attributes are properly set
+configuration/environment and or to check if attributes are properly set
 (ie. you change environment with `os.environ`)
 
 
@@ -22,10 +22,6 @@ Install
 install via::
 
     pip install pytest-echo
-
-
-
-The plugin provides ability to print some extra information prior to run the tests.
 
 
 
@@ -56,6 +52,7 @@ Dump package version
     Package version:
         pytest_echo: 0.1
     plugins: echo, pydev, cov, cache, django
+
 
 .. warning:: The first attempt to retrieve the version is done via setuptools
     if it fails, the module is imported (``__import__(package)``) to retrieve the version reading

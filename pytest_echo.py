@@ -1,13 +1,21 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+
 import fnmatch
 import os
 from pprint import pformat
 
-import pip
+import pkg_resources
 from pkg_resources import DistributionNotFound
 
 __version__ = '1.6.0'
+
+
+def get_installed_distributions():
+    """
+    Return a list of installed Distribution objects.
+    """
+    return [d for d in pkg_resources.working_set]
 
 
 def get_attr(obj, attr, default='NOT FOUND'):
@@ -105,7 +113,7 @@ def get_env(var_name):
 def get_version(package_name):
     if '*' in package_name:
         targets = [(i.key, i.version)
-                   for i in pip.get_installed_distributions()
+                   for i in get_installed_distributions()
                    if fnmatch.fnmatch(i.key, package_name)]
     else:
         targets = [(package_name, _get_version(package_name))]
