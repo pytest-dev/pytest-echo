@@ -33,7 +33,7 @@ Dump environment variables
 
 .. code-block:: sh
 
-    $ py.test --echo-env=HOME
+    $ pytest --echo-env=HOME
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Environment:
@@ -46,7 +46,7 @@ Dump package version
 
 .. code-block:: sh
 
-    $ py.test --echo-version=pytest_echo
+    $ pytest --echo-version=pytest_echo
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Package version:
@@ -65,7 +65,7 @@ Dump attributes
 
 .. code-block:: sh
 
-    $ py.test --echo-attr=django.conf.settings.DEBUG
+    $ pytest --echo-attr=django.conf.settings.DEBUG
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Inspections
@@ -102,7 +102,7 @@ Example of use in a django project:
 
 .. code-block:: sh
 
-    $ py.test
+    $ pytest
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Environment:
@@ -130,7 +130,7 @@ as:
 
 .. code-block:: sh
 
-    $ py.test --echo-version=pytest-* --echo-env=VIRTUAL*
+    $ pytest --echo-version=pytest-* --echo-env=VIRTUAL*
 
 or
 
