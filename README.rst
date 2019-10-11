@@ -9,7 +9,7 @@ pytest-echo
 
 
 Print environment variables, package version and generic attributes,
-as they are at the begining of the test.
+as they are at the beginning of the test.
 
 Useful in the continuous integration to dump test
 configuration/environment and or to check if attributes are properly set

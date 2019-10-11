@@ -66,7 +66,7 @@ def get_module_attribute(path):
     The `attribute` can be either a module attribute (ie. os.path.curdir)
     or a object attribute (ie. linecache.cache.__class__)
 
-    Warning: Be careful when use thi function as it load any module in the path
+    Warning: Be careful when use this function as it load any module in the path
     and this will execute any module's level code
 
     :param path: full path to the attribute
