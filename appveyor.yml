@@ -1,5 +1,5 @@
 # What Python version is installed where:
-# http://www.appveyor.com/docs/installed-software#python
+# https://www.appveyor.com/docs/build-environment/#python
 
 environment:
   matrix:
