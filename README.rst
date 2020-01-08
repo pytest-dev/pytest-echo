@@ -4,12 +4,12 @@ pytest-echo
 
 
 .. image:: https://badge.fury.io/py/pytest-echo.svg
-   :target: http://badge.fury.io/py/pytest-echo
+   :target: https://pypi.org/project/pytest-echo/
    :alt: PyPI package
 
 
 Print environment variables, package version and generic attributes,
-as they are at the begining of the test.
+as they are at the beginning of the test.
 
 Useful in the continuous integration to dump test
 configuration/environment and or to check if attributes are properly set
@@ -33,7 +33,7 @@ Dump environment variables
 
 .. code-block:: sh
 
-    $ py.test --echo-env=HOME
+    $ pytest --echo-env=HOME
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Environment:
@@ -46,7 +46,7 @@ Dump package version
 
 .. code-block:: sh
 
-    $ py.test --echo-version=pytest_echo
+    $ pytest --echo-version=pytest_echo
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Package version:
@@ -65,7 +65,7 @@ Dump attributes
 
 .. code-block:: sh
 
-    $ py.test --echo-attr=django.conf.settings.DEBUG
+    $ pytest --echo-attr=django.conf.settings.DEBUG
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Inspections
@@ -102,7 +102,7 @@ Example of use in a django project:
 
 .. code-block:: sh
 
-    $ py.test
+    $ pytest
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
     Environment:
@@ -130,7 +130,7 @@ as:
 
 .. code-block:: sh
 
-    $ py.test --echo-version=pytest-* --echo-env=VIRTUAL*
+    $ pytest --echo-version=pytest-* --echo-env=VIRTUAL*
 
 or
 
@@ -152,33 +152,33 @@ Links
 +--------------------+-----------------+---------------+----------------+
 | Development        |  |dev-build|    |  |dev-cov|    |  |dev-doc|     |
 +--------------------+-----------------+---------------+----------------+
-| Project home page: | https://github.com/saxix/pytest-echo             |
+| Project home page: | https://github.com/pytest-dev/pytest-echo        |
 +--------------------+--------------------------------------------------+
-| Issue tracker:     | https://github.com/saxix/pytest-echo/issues?sort |
+| Issue tracker:     | https://github.com/pytest-dev/pytest-echo/issues |
 +--------------------+--------------------------------------------------+
-| CI:                | https://travis-ci.org/saxix/pytest-echo          |
+| CI:                | https://travis-ci.org/pytest-dev/pytest-echo     |
 +--------------------+--------------------------------------------------+
-| Download:          | http://pypi.python.org/pypi/pytest-echo/         |
+| Download:          | https://pypi.org/project/pytest-echo/            |
 +--------------------+--------------------------------------------------+
-| Documentation:     | https://pytest-echo.readthedocs.org/en/latest/   |
+| Documentation:     | https://pytest-echo.readthedocs.io/en/latest/    |
 +--------------------+--------------------------------------------------+
 
 
-.. |master-build| image:: https://secure.travis-ci.org/saxix/pytest-echo.png?branch=master
-                    :target: http://travis-ci.org/saxix/pytest-echo/
+.. |master-build| image:: https://travis-ci.org/pytest-dev/pytest-echo.svg?branch=master
+                    :target: https://travis-ci.org/pytest-dev/pytest-echo
 
-.. |master-cov| image:: https://codecov.io/gh/saxix/pytest-echo/branch/master/graph/badge.svg
-                    :target: https://codecov.io/gh/saxix/pytest-echo
+.. |master-cov| image:: https://codecov.io/gh/pytest-dev/pytest-echo/branch/master/graph/badge.svg
+                    :target: https://codecov.io/gh/pytest-dev/pytest-echo
 
 .. |master-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=stable
-                    :target: http://pytest-echo.readthedocs.io/en/stable/
+                    :target: https://pytest-echo.readthedocs.io/en/stable/
 
-.. |dev-build| image:: https://secure.travis-ci.org/saxix/pytest-echo.png?branch=develop
-                  :target: http://travis-ci.org/saxix/pytest-echo/
+.. |dev-build| image:: https://travis-ci.org/pytest-dev/pytest-echo.svg?branch=develop
+                  :target: https://travis-ci.org/pytest-dev/pytest-echo
 
-.. |dev-cov| image:: https://codecov.io/gh/saxix/pytest-echo/branch/develop/graph/badge.svg
-                :target: https://codecov.io/gh/saxix/pytest-echo
+.. |dev-cov| image:: https://codecov.io/gh/pytest-dev/pytest-echo/branch/develop/graph/badge.svg
+                :target: https://codecov.io/gh/pytest-dev/pytest-echo
 
 .. |dev-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
-                :target: http://pytest-echo.readthedocs.io/en/latest/
+                :target: https://pytest-echo.readthedocs.io/en/latest/
 

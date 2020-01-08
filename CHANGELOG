@@ -1,11 +1,16 @@
-1.6.0 (dev)
------------
+1.7.0
+-----
+* add support python 3.6,3.7,3.8
+* bug fixes
+
+1.6.0
+-----
 * removed pip dependency
 * drop support pytest<3.0
 
 1.5.1
 -----
-* drop suport python 2.6
+* drop support python 2.6
 
 1.5
 ---
