@@ -9,6 +9,7 @@ setup(
     description='pytest plugin with mechanisms for echoing environment '
                 'variables, package version and generic attributes',
     long_description=open("README.rst").read(),
+    long_description_content_type='text/x-rst',
     version=__version__,
     author='Stefano Apostolico',
     author_email='s.apostolico@gmail.com',
