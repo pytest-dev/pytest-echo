@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 from setuptools import setup
 from pytest_echo import __version__
 
@@ -8,7 +7,7 @@ setup(
     name='pytest-echo',
     description='pytest plugin with mechanisms for echoing environment '
                 'variables, package version and generic attributes',
-    long_description=open("README.rst").read(),
+    long_description=open('README.rst').read(),
     long_description_content_type='text/x-rst',
     version=__version__,
     author='Stefano Apostolico',

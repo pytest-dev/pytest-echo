@@ -84,7 +84,7 @@ Configure via tox.ini/setup.cfg/pytest.cfg
 
 Example of use in a django project:
 
-.. code-block:: inifile
+.. code-block:: ini
 
     [pytest]
     addopts = -vvv
@@ -134,7 +134,7 @@ as:
 
 or
 
-.. code-block:: inifile
+.. code-block:: ini
 
     [pytest]
     addopts = -vvv
