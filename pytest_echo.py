@@ -8,7 +8,7 @@ from pprint import pformat
 import pkg_resources
 from pkg_resources import DistributionNotFound
 
-__version__ = '1.6.0'
+__version__ = '1.7.0'
 
 
 def get_installed_distributions():
