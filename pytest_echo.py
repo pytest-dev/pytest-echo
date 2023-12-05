@@ -1,14 +1,12 @@
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-
 import fnmatch
 import os
 from pprint import pformat
 
 import pkg_resources
+import pytest
 from pkg_resources import DistributionNotFound
 
-__version__ = '1.7.1'
+__version__ = '1.7.2'
 
 
 def get_installed_distributions():
@@ -168,6 +166,7 @@ def pytest_report_header(config):
         return "\n".join(ret)
 
 
+@pytest.hookimpl()
 def pytest_addoption(parser):
     group = parser.getgroup("general")
     group.addoption('--echo-env', action='append', dest="echo_envs",
