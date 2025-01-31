@@ -1,3 +1,10 @@
+1.8.0
+-----
+* drop support for setuptools
+* drop support for python < 3.11
+* drop support for pytest < 6.0
+
+
 1.7.0
 -----
 * add support python 3.6,3.7,3.8
