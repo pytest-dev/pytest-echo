@@ -1,5 +1,6 @@
 .idea
 .cache
+.envrc
 .tox
 dist
 pytest_echo.egg-info
