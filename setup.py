@@ -15,7 +15,7 @@ setup(
     entry_points={"pytest11": ["echo = pytest_echo"]},
     install_requires=["pytest>=6.0"],
     license="MIT License",
-    python_requires=">=3.11",
+    python_requires=">=3.9",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Plugins",

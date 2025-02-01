@@ -71,7 +71,7 @@ def test_echo_version_missing(testdir):
 def test_echo_version_glob(testdir):
     result = testdir.runpytest("--echo-version=pytest*")
     result.stdout.fnmatch_lines(["    pytest: %s" % pytest.__version__])
-    result.stdout.fnmatch_lines(["    pytest-echo: %s" % pytest_echo.__version__])
+    result.stdout.fnmatch_lines(["    pytest_echo: %s" % pytest_echo.__version__])
 
 
 def test_echo_all(testdir):
