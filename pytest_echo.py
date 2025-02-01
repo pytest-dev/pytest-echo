@@ -1,21 +1,19 @@
-# -*- coding: utf-8 -*-
-from __future__ import print_function
-
 import fnmatch
 import os
 from pprint import pformat
 
-import pkg_resources
-from pkg_resources import DistributionNotFound
-
-__version__ = '1.7.1'
+import pytest
 
 
 def get_installed_distributions():
     """
     Return a list of installed Distribution objects.
     """
-    return [d for d in pkg_resources.working_set]
+    try:
+        import pkg_resources
+        return [d for d in pkg_resources.working_set]
+    except (ImportError, AttributeError, TypeError):
+        pass
 
 
 def get_attr(obj, attr, default='NOT FOUND'):
@@ -126,7 +124,7 @@ def _get_version(package_name):
         import pkg_resources
 
         return pkg_resources.require(package_name)[0].version
-    except (ImportError, AttributeError, TypeError, DistributionNotFound):
+    except (ImportError, AttributeError, TypeError):
         pass
 
     try:
@@ -168,6 +166,7 @@ def pytest_report_header(config):
         return "\n".join(ret)
 
 
+@pytest.hookimpl()
 def pytest_addoption(parser):
     group = parser.getgroup("general")
     group.addoption('--echo-env', action='append', dest="echo_envs",
