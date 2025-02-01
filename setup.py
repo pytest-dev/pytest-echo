@@ -7,7 +7,7 @@ setup(
     "variables, package version and generic attributes",
     long_description=open("README.rst").read(),
     long_description_content_type="text/x-rst",
-    version=metadata.version("pytest_echo"),
+    version="1.8.1",
     author="Stefano Apostolico",
     author_email="s.apostolico@gmail.com",
     url="https://github.com/pytest-dev/pytest-echo",
