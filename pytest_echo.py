@@ -17,7 +17,7 @@ def get_installed_distributions():
 
         return [(d.name, d.version) for d in metadata.distributions()]
     except (ImportError, AttributeError, TypeError):
-        pass
+        return []
 
 
 def get_attr(obj, attr, default="NOT FOUND"):
