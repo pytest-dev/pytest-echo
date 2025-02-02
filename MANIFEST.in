@@ -1,8 +1,5 @@
 graft docs
 include CHANGELOG
 include LICENSE
-include pytest_echo.py
-include README.rst
-include setup.py
-include test_echo.py
-include tox.ini
+include src/*.py
+include README.md

@@ -1,12 +1,10 @@
-===========
-pytest-echo
-===========
+# pytest-echo
 
-
-.. image:: https://badge.fury.io/py/pytest-echo.svg
-   :target: https://pypi.org/project/pytest-echo/
-   :alt: PyPI package
-
+[![PyPI](https://img.shields.io/pypi/v/pytest-echo?style=flat-square)](https://pypi.org/project/pytest-echo/)
+[![Supported Python
+versions](https://img.shields.io/pypi/pyversions/pytest-echo.svg)](https://pypi.org/project/pytest-echo/)
+[![tests](https://github.com/pytest-dev/pytest-echo/actions/workflows/test.yaml/badge.svg)](https://github.com/pytest-dev/pytest-echo/actions/workflows/test.yaml)
+[![Downloads](https://static.pepy.tech/badge/pytest-echo/month)](https://pepy.tech/project/pytest-echo)
 
 Print environment variables, package version and generic attributes,
 as they are at the beginning of the test.
@@ -15,21 +13,15 @@ Useful in the continuous integration to dump test
 configuration/environment and or to check if attributes are properly set
 (ie. you change environment with `os.environ`)
 
-
-Install
-=======
+# Install
 
 install via::
 
     pip install pytest-echo
 
+# Examples
 
-
-Examples
-========
-
-Dump environment variables
---------------------------
+## Dump environment variables
 
 .. code-block:: sh
 
@@ -40,9 +32,7 @@ Dump environment variables
         HOME: /Users/sax
     plugins: echo, pydev, cov, cache, django
 
-
-Dump package version
---------------------
+## Dump package version
 
 .. code-block:: sh
 
@@ -53,15 +43,13 @@ Dump package version
         pytest_echo: 0.1
     plugins: echo, pydev, cov, cache, django
 
-
 .. warning:: The first attempt to retrieve the version is done via setuptools
-    if it fails, the module is imported (``__import__(package)``) to retrieve the version reading
-    ``get_version``, ``__version__``, ``VERSION``, ``version`` so any module
-    level code is executed. This should be not an issue as no problematic code
-    should be present in the first level of the package
+if it fails, the module is imported (`__import__(package)`) to retrieve the version reading
+`get_version`, `__version__`, `VERSION`, `version` so any module
+level code is executed. This should be not an issue as no problematic code
+should be present in the first level of the package
 
-Dump attributes
----------------
+## Dump attributes
 
 .. code-block:: sh
 
@@ -72,15 +60,13 @@ Dump attributes
         django.conf.settings.DEBUG: False
     plugins: echo, pydev, cov, cache, django
 
-.. warning:: Be careful when use ``--echo-attr``. It loads any module in the path and this will
-    execute any module level code
-    If you try to dump a property, related ``getter`` will be executed.
+.. warning:: Be careful when use `--echo-attr`. It loads any module in the path and this will
+execute any module level code
+If you try to dump a property, related `getter` will be executed.
 
 .. note:: You cannot dump callable result.
 
-
-Configure via tox.ini/setup.cfg/pytest.cfg
-------------------------------------------
+## Configure via tox.ini/setup.cfg/pytest.cfg
 
 Example of use in a django project:
 
@@ -97,8 +83,6 @@ Example of use in a django project:
             --echo-version pip
             --echo-version pytest-echo
             --echo-attr django.conf.settings.DATABASES.default.ENGINE
-
-
 
 .. code-block:: sh
 
@@ -121,9 +105,7 @@ Example of use in a django project:
     .............
     14 passed in 4.95 seconds
 
-
-Globbing
---------
+## Globbing
 
 Starting from version 1.5, is possible to glob packages version and environment variables,
 as:
@@ -141,44 +123,38 @@ or
             --echo-env VIRTUAL*
             --echo-version pytest-*
 
-
-
-
-Links
------
+## Links
 
 +--------------------+-----------------+---------------+----------------+
-| Stable             |  |master-build| |  |master-cov| |  |master-doc|  |
+| Stable | |master-build| | |master-cov| | |master-doc| |
 +--------------------+-----------------+---------------+----------------+
-| Development        |  |dev-build|    |  |dev-cov|    |  |dev-doc|     |
+| Development | |dev-build| | |dev-cov| | |dev-doc| |
 +--------------------+-----------------+---------------+----------------+
-| Project home page: | https://github.com/pytest-dev/pytest-echo        |
+| Project home page: | https://github.com/pytest-dev/pytest-echo |
 +--------------------+--------------------------------------------------+
-| Issue tracker:     | https://github.com/pytest-dev/pytest-echo/issues |
+| Issue tracker: | https://github.com/pytest-dev/pytest-echo/issues |
 +--------------------+--------------------------------------------------+
-| CI:                | https://travis-ci.org/pytest-dev/pytest-echo     |
+| CI: | https://travis-ci.org/pytest-dev/pytest-echo |
 +--------------------+--------------------------------------------------+
-| Download:          | https://pypi.org/project/pytest-echo/            |
+| Download: | https://pypi.org/project/pytest-echo/ |
 +--------------------+--------------------------------------------------+
-| Documentation:     | https://pytest-echo.readthedocs.io/en/latest/    |
+| Documentation: | https://pytest-echo.readthedocs.io/en/latest/ |
 +--------------------+--------------------------------------------------+
-
 
 .. |master-build| image:: https://travis-ci.org/pytest-dev/pytest-echo.svg?branch=master
-                    :target: https://travis-ci.org/pytest-dev/pytest-echo
+:target: https://travis-ci.org/pytest-dev/pytest-echo
 
 .. |master-cov| image:: https://codecov.io/gh/pytest-dev/pytest-echo/branch/master/graph/badge.svg
-                    :target: https://codecov.io/gh/pytest-dev/pytest-echo
+:target: https://codecov.io/gh/pytest-dev/pytest-echo
 
 .. |master-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=stable
-                    :target: https://pytest-echo.readthedocs.io/en/stable/
+:target: https://pytest-echo.readthedocs.io/en/stable/
 
 .. |dev-build| image:: https://travis-ci.org/pytest-dev/pytest-echo.svg?branch=develop
-                  :target: https://travis-ci.org/pytest-dev/pytest-echo
+:target: https://travis-ci.org/pytest-dev/pytest-echo
 
 .. |dev-cov| image:: https://codecov.io/gh/pytest-dev/pytest-echo/branch/develop/graph/badge.svg
-                :target: https://codecov.io/gh/pytest-dev/pytest-echo
+:target: https://codecov.io/gh/pytest-dev/pytest-echo
 
 .. |dev-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
-                :target: https://pytest-echo.readthedocs.io/en/latest/
-
+:target: https://pytest-echo.readthedocs.io/en/latest/
