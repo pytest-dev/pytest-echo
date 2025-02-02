@@ -1,8 +1,8 @@
-name: check
+name: tests
 on:
   workflow_dispatch:
   push:
-    branches: ["main"]
+    branches: ["develop"]
     tags-ignore: ["**"]
   pull_request:
   schedule:
