@@ -3,8 +3,9 @@
 [![PyPI](https://img.shields.io/pypi/v/pytest-echo?style=flat-square)](https://pypi.org/project/pytest-echo/)
 [![Supported Python
 versions](https://img.shields.io/pypi/pyversions/pytest-echo.svg)](https://pypi.org/project/pytest-echo/)
-[![tests](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yaml/badge.svg)](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yaml)
+[![tests](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yml/badge.svg)](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yml)
 [![Downloads](https://static.pepy.tech/badge/pytest-echo/month)](https://pepy.tech/project/pytest-echo)
+
 
 Print environment variables, package version and generic attributes,
 as they are at the beginning of the test.
