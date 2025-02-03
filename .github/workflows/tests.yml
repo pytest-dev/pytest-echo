@@ -37,15 +37,28 @@ jobs:
           enable-cache: true
           cache-dependency-glob: "pyproject.toml"
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install tox
         run: uv tool install --python-preference only-managed --python 3.13 tox --with tox-uv
+
       - name: Install Python
         if: startsWith(matrix.env, '3.') && matrix.env != '3.13'
         run: uv python install --python-preference only-managed ${{ matrix.env }}
+
       - name: Setup test suite
         run: tox run -vv --notest --skip-missing-interpreters false -e ${{ matrix.env }}
+
       - name: Run test suite
         run: tox run --skip-pkg-install -e ${{ matrix.env }}
+          COV_CMD=$(if [ ${{ matrix.env }} == 3.12 ]; then echo "--cov=pytest_echo --cov-report=xml"; else echo ; fi) tox run --skip-pkg-install -e ${{ matrix.env }} | paste -sd "," -)
+
         env:
           PYTEST_ADDOPTS: "-vv --durations=20"
           DIFF_AGAINST: HEAD
+
+#      - name: Upload coverage to Codecov
+#        uses: codecov/codecov-action@v5
+#        if: ${{ success() && matrix.python-version == 3.12 }}
+#        with:
+#          env_vars: OS
+#          name: codecov-pytest-order
