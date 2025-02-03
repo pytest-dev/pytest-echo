@@ -5,6 +5,9 @@
 versions](https://img.shields.io/pypi/pyversions/pytest-echo.svg)](https://pypi.org/project/pytest-echo/)
 [![tests](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yml/badge.svg)](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yml)
 [![Downloads](https://static.pepy.tech/badge/pytest-echo/month)](https://pepy.tech/project/pytest-echo)
+[![Coverage](https://codecov.io/gh/pytest-dev/pytest-echo/branch/develop/graph/badge.svg)](https://codecov.io/gh/pytest-dev/pytest-echo)
+[![Documentation](https://readthedocs.org/projects/pytest-echo/badge/?version=latest)](https://pytest-echo.readthedocs.io/en/latest/)
+
 
 
 Print environment variables, package version and generic attributes,
@@ -24,7 +27,7 @@ install via::
 
 ## Dump environment variables
 
-.. code-block:: sh
+
 
     $ pytest --echo-env=HOME
     ============================= test session starts =========================
@@ -35,7 +38,7 @@ install via::
 
 ## Dump package version
 
-.. code-block:: sh
+
 
     $ pytest --echo-version=pytest_echo
     ============================= test session starts =========================
@@ -44,15 +47,14 @@ install via::
         pytest_echo: 0.1
     plugins: echo, pydev, cov, cache, django
 
-.. warning:: The first attempt to retrieve the version is done via setuptools
-if it fails, the module is imported (`__import__(package)`) to retrieve the version reading
-`get_version`, `__version__`, `VERSION`, `version` so any module
-level code is executed. This should be not an issue as no problematic code
-should be present in the first level of the package
+> [!NOTE] 
+> The first attempt to retrieve the version is done via setuptools
+> if it fails, the module is imported (`__import__(package)`) to retrieve the version reading
+> `get_version`, `__version__`, `VERSION`, `version` so any module
+> level code is executed. This should be not an issue as no problematic code
+> should be present in the first level of the package
 
 ## Dump attributes
-
-.. code-block:: sh
 
     $ pytest --echo-attr=django.conf.settings.DEBUG
     ============================= test session starts =========================
@@ -61,17 +63,15 @@ should be present in the first level of the package
         django.conf.settings.DEBUG: False
     plugins: echo, pydev, cov, cache, django
 
-.. warning:: Be careful when use `--echo-attr`. It loads any module in the path and this will
-execute any module level code
-If you try to dump a property, related `getter` will be executed.
+> [!NOTE]
+> Be careful when use `--echo-attr`. It loads any module in the path and this will execute any module level code
+> If you try to dump a property, related `getter` will be executed.
 
-.. note:: You cannot dump callable result.
+> [!NOTE] You cannot dump callable result.
 
 ## Configure via tox.ini/setup.cfg/pytest.cfg
 
 Example of use in a django project:
-
-.. code-block:: ini
 
     [pytest]
     addopts = -vvv
@@ -85,7 +85,7 @@ Example of use in a django project:
             --echo-version pytest-echo
             --echo-attr django.conf.settings.DATABASES.default.ENGINE
 
-.. code-block:: sh
+
 
     $ pytest
     ============================= test session starts =========================
@@ -111,51 +111,13 @@ Example of use in a django project:
 Starting from version 1.5, is possible to glob packages version and environment variables,
 as:
 
-.. code-block:: sh
 
     $ pytest --echo-version=pytest-* --echo-env=VIRTUAL*
 
 or
 
-.. code-block:: ini
 
     [pytest]
     addopts = -vvv
             --echo-env VIRTUAL*
             --echo-version pytest-*
-
-## Links
-
-+--------------------+-----------------+---------------+----------------+
-| Stable | |master-build| | |master-cov| | |master-doc| |
-+--------------------+-----------------+---------------+----------------+
-| Development | |dev-build| | |dev-cov| | |dev-doc| |
-+--------------------+-----------------+---------------+----------------+
-| Project home page: | https://github.com/pytest-dev/pytest-echo |
-+--------------------+--------------------------------------------------+
-| Issue tracker: | https://github.com/pytest-dev/pytest-echo/issues |
-+--------------------+--------------------------------------------------+
-| CI: | https://travis-ci.org/pytest-dev/pytest-echo |
-+--------------------+--------------------------------------------------+
-| Download: | https://pypi.org/project/pytest-echo/ |
-+--------------------+--------------------------------------------------+
-| Documentation: | https://pytest-echo.readthedocs.io/en/latest/ |
-+--------------------+--------------------------------------------------+
-
-.. |master-build| image:: https://travis-ci.org/pytest-dev/pytest-echo.svg?branch=master
-:target: https://travis-ci.org/pytest-dev/pytest-echo
-
-.. |master-cov| image:: https://codecov.io/gh/pytest-dev/pytest-echo/branch/master/graph/badge.svg
-:target: https://codecov.io/gh/pytest-dev/pytest-echo
-
-.. |master-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=stable
-:target: https://pytest-echo.readthedocs.io/en/stable/
-
-.. |dev-build| image:: https://travis-ci.org/pytest-dev/pytest-echo.svg?branch=develop
-:target: https://travis-ci.org/pytest-dev/pytest-echo
-
-.. |dev-cov| image:: https://codecov.io/gh/pytest-dev/pytest-echo/branch/develop/graph/badge.svg
-:target: https://codecov.io/gh/pytest-dev/pytest-echo
-
-.. |dev-doc| image:: https://readthedocs.org/projects/pytest-echo/badge/?version=latest
-:target: https://pytest-echo.readthedocs.io/en/latest/
