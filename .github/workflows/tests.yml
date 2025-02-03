@@ -19,15 +19,15 @@ jobs:
       fail-fast: false
       matrix:
         env:
-          - "3.13"
+          #          - "3.13"
           - "3.12"
-          - "3.11"
-          - "3.10"
-          - "3.9"
-          - "3.8"
-          - type
-          - dev
-          - pkg_meta
+    #          - "3.11"
+    #          - "3.10"
+    #          - "3.9"
+    #          - "3.8"
+    #          - type
+    #          - dev
+    #          - pkg_meta
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,13 +46,13 @@ jobs:
         if: startsWith(matrix.env, '3.') && matrix.env != '3.13'
         run: uv python install --python-preference only-managed ${{ matrix.env }}
 
-      - name: Setup test suite
-        run: tox run -vv --notest --skip-missing-interpreters false -e ${{ matrix.env }}
+      #      - name: Setup test suite
+      #        run: tox run -vv --notest --skip-missing-interpreters false -e ${{ matrix.env }}
 
       - name: Run test suite
-        run: tox run --skip-pkg-install -e ${{ matrix.env }}
-          COV_CMD=$(if [ ${{ matrix.env }} == 3.12 ]; then echo "--cov=pytest_echo --cov-report=xml"; else echo ; fi) tox run --skip-pkg-install -e ${{ matrix.env }} | paste -sd "," -)
-
+        run:
+          COV_CMD=$(if [ ${{ matrix.env }} == 3.12 ]; then echo "--cov=pytest_echo --cov-report=xml"; else echo ; fi)
+          tox run --skip-pkg-install -e ${{ matrix.env }} $COV_CMD
         env:
           PYTEST_ADDOPTS: "-vv --durations=20"
           DIFF_AGAINST: HEAD

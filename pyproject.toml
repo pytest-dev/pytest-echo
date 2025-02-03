@@ -7,17 +7,19 @@ requires = [
 
 [project]
 name = "pytest-echo"
-description = "pytest plugin that allows you to dump environment variables, package version and generic attributes"
+description = "pytest plugin that allows to dump environment variables, package version and generic attributes"
 readme = "README.md"
 keywords = [
   "echo",
   "pytest",
 ]
 license.file = "LICENSE"
+
 maintainers = [
   { name = "Stefano Apostolico", email = "s.apostolico@gmail.com" },
 ]
 requires-python = ">=3.8"
+
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
@@ -41,23 +43,21 @@ dependencies = [
   "pytest>=8.3.3",
   "tomli>=2.0.1; python_version<'3.11'",
 ]
-optional-dependencies.testing = [
-  "covdefaults>=2.3",
-  "coverage>=7.6.1",
-  "pytest-mock>=3.14",
-]
+
 urls.Homepage = "https://github.com/pytest-dev/pytest-echo"
 urls.Source = "https://github.com/pytest-dev/pytest-echo"
 urls.Tracker = "https://github.com/pytest-dev/pytest-echo/issues"
-
 entry-points.pytest11.echo = "pytest_echo.plugin"
 
 [dependency-groups]
 dev = [
+  "covdefaults>=2.3",
+  "coverage>=7.6.1",
   "mypy>=1.14.1",
   "pdbpp>=0.10.3",
-  "pre-commit-uv>=4.1.1",
+  "pre-commit",
   "pytest>=8.3.4",
+  "pytest-mock>=3.14",
   "ruff>=0.9.4",
   "tox>=4.24.1",
 ]
@@ -105,11 +105,6 @@ lint.isort = { known-first-party = [ "pytest_echo" ], required-imports = [
   "from __future__ import annotations",
 ] }
 
-#[tool.codespell]
-#builtin = "clear,usage,en-GB_to_en-US"
-#write-changes = true
-#count = true
-
 lint.preview = true
 
 [tool.pyproject-fmt]
@@ -132,7 +127,7 @@ run.parallel = true
 run.plugins = [
   "covdefaults",
 ]
-report.fail_under = 80
+report.fail_under = 90
 report.show_missing = true
 html.show_contexts = true
 html.skip_covered = false
