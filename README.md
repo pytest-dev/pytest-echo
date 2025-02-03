@@ -8,8 +8,6 @@ versions](https://img.shields.io/pypi/pyversions/pytest-echo.svg)](https://pypi.
 [![Coverage](https://codecov.io/gh/pytest-dev/pytest-echo/branch/develop/graph/badge.svg)](https://codecov.io/gh/pytest-dev/pytest-echo)
 [![Documentation](https://readthedocs.org/projects/pytest-echo/badge/?version=latest)](https://pytest-echo.readthedocs.io/en/latest/)
 
-
-
 Print environment variables, package version and generic attributes,
 as they are at the beginning of the test.
 
@@ -27,8 +25,6 @@ install via::
 
 ## Dump environment variables
 
-
-
     $ pytest --echo-env=HOME
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
@@ -38,8 +34,6 @@ install via::
 
 ## Dump package version
 
-
-
     $ pytest --echo-version=pytest_echo
     ============================= test session starts =========================
     platform linux2 -- Python 2.7.4 -- py-1.4.22 -- pytest-2.6.0 -- /bin/python
@@ -47,7 +41,7 @@ install via::
         pytest_echo: 0.1
     plugins: echo, pydev, cov, cache, django
 
-> [!NOTE] 
+> [!NOTE]
 > The first attempt to retrieve the version is done via setuptools
 > if it fails, the module is imported (`__import__(package)`) to retrieve the version reading
 > `get_version`, `__version__`, `VERSION`, `version` so any module
@@ -111,11 +105,9 @@ Example of use in a django project:
 Starting from version 1.5, is possible to glob packages version and environment variables,
 as:
 
-
     $ pytest --echo-version=pytest-* --echo-env=VIRTUAL*
 
 or
-
 
     [pytest]
     addopts = -vvv

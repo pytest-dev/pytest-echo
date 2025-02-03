@@ -1,6 +1,6 @@
 2.0
 ---
-* add support python 3.9..3.13
+* add support python 3.8..3.13
 * add typing
 
 
