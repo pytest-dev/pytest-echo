@@ -208,9 +208,9 @@ def pytest_load_initial_conftests(
     for entry in _load_values(early_config):
         if entry.type in {"env", "envs", "echo_envs"}:
             early_config.option.echo_envs.append(entry.key)
-        if entry.type in ["attr", "attribute", "echo_attribute"]:
+        if entry.type in {"attr", "attribute", "echo_attribute"}:
             early_config.option.echo_attributes.append(entry.key)
-        if entry.type in ["version", "echo_version"]:
+        if entry.type in {"version", "echo_version"}:
             early_config.option.echo_versions.append(entry.key)
 
 

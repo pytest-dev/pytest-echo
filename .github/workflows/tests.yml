@@ -19,15 +19,15 @@ jobs:
       fail-fast: false
       matrix:
         env:
-          #          - "3.13"
+          - "3.13"
           - "3.12"
-    #          - "3.11"
-    #          - "3.10"
-    #          - "3.9"
-    #          - "3.8"
-    #          - type
-    #          - dev
-    #          - pkg_meta
+          - "3.11"
+          - "3.10"
+          - "3.9"
+          - "3.8"
+          - type
+          - dev
+          - pkg_meta
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,8 +46,8 @@ jobs:
         if: startsWith(matrix.env, '3.') && matrix.env != '3.13'
         run: uv python install --python-preference only-managed ${{ matrix.env }}
 
-      #      - name: Setup test suite
-      #        run: tox run -vv --notest --skip-missing-interpreters false -e ${{ matrix.env }}
+      - name: Setup test suite
+        run: tox run -vv --notest --skip-missing-interpreters false -e ${{ matrix.env }}
 
       - name: Run test suite
         run:

@@ -113,11 +113,9 @@ max_supported_python = "3.13"
 [tool.pytest.ini_options]
 addopts = "-ra -q"
 testpaths = [
+  "src",
   "tests",
 ]
-#echo_envs = ["ENV1", "ENV2"]
-#echo_attributes = []
-#echo_versions = ["pytest"]
 
 [tool.coverage]
 run.source = [

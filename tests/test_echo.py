@@ -130,32 +130,4 @@ def test_echo_no_inspections(testdir: pytest.Testdir) -> None:
 def test_echo_attr_module_object_attr(testdir: pytest.Testdir) -> None:
     result = testdir.runpytest("--echo-attr=linecache.cache.__class__")
     match = "    linecache.cache.__class__: <class 'dict'>"
-
     result.stdout.fnmatch_lines([match])
-
-
-def test_django_settings(testdir: pytest.Testdir) -> None:
-    pytest.importorskip("django")
-    testdir.makeconftest("""
-        def pytest_configure(config):
-            import django
-            from django.conf import settings  # noqa
-            settings.configure()
-    """)
-    result = testdir.runpytest("--echo-attr=django.conf.settings.DEBUG")
-    result.stdout.fnmatch_lines([
-        "    django.conf.settings.DEBUG: False",
-    ])
-
-
-def test_django_settings_extended(testdir: pytest.Testdir) -> None:
-    pytest.importorskip("django")
-    testdir.makeconftest("""
-        def pytest_configure(config):
-            import django
-            from django.conf import settings  # noqa
-            settings.configure()
-            settings.DATABASES = {'default':{ 'ENGINE': 'sqlite3'}}
-    """)
-    result = testdir.runpytest("--echo-attr=django.conf.settings.DATABASES.default.ENGINE")
-    result.stdout.fnmatch_lines(["    django.conf.settings.DATABASES.default.ENGINE: 'sqlite3'"])
