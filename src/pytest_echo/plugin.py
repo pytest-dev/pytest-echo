@@ -5,13 +5,22 @@ from __future__ import annotations
 import fnmatch
 import importlib.metadata as meta
 import os
+from dataclasses import dataclass
 from pprint import pformat
-from typing import Any
+from typing import Any, Iterator
 
 import pytest
 
 UNKNOWN_TYPE = "unknown type"
 UNKNOWN_ATTR = "unknown attribute"
+
+
+@dataclass
+class Entry:
+    """Configuration entries."""
+
+    key: str
+    type: str
 
 
 def get_installed_distributions() -> list[tuple[str, str]]:
@@ -26,7 +35,6 @@ def get_attr(obj: Any, attr: str, default: str | None = "NOT FOUND") -> Any:
     """Recursive get object's attribute. May use dot notation."""
     if "." not in attr:
         try:
-            ret = default
             if hasattr(obj, attr):
                 ret = getattr(obj, attr, default)
             elif isinstance(obj, (list, tuple)):
@@ -147,6 +155,25 @@ def pytest_report_header(config: pytest.Config) -> str | None:
 @pytest.hookimpl
 def pytest_addoption(parser: pytest.Parser) -> None:
     """Add section to configuration files."""
+    parser.addini(
+        "echo_envs",
+        type="linelist",
+        default=[],
+        help="environment to print",
+    )
+    parser.addini(
+        "echo_attributes",
+        type="linelist",
+        default=[],
+        help="attribute to print (full path)",
+    )
+    parser.addini(
+        "echo_versions",
+        type="linelist",
+        default=[],
+        help="package version to print",
+    )
+
     group = parser.getgroup("general")
     group.addoption(
         "--echo-env",
@@ -169,3 +196,30 @@ def pytest_addoption(parser: pytest.Parser) -> None:
         default=[],
         help="attribute to print (full path)",
     )
+
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_load_initial_conftests(
+    args: list[str],  # noqa: ARG001
+    early_config: pytest.Config,
+    parser: pytest.Parser,  # noqa: ARG001
+) -> None:
+    """Load environment variables from configuration files."""
+    for entry in _load_values(early_config):
+        if entry.type in {"env", "envs", "echo_envs"}:
+            early_config.option.echo_envs.append(entry.key)
+        if entry.type in ["attr", "attribute", "echo_attribute"]:
+            early_config.option.echo_attributes.append(entry.key)
+        if entry.type in ["version", "echo_version"]:
+            early_config.option.echo_versions.append(entry.key)
+
+
+def _load_values(early_config: pytest.Config) -> Iterator[Entry]:
+    has_toml_conf = False
+    if not has_toml_conf:
+        for var in early_config.getini("echo_envs"):
+            yield Entry(var, "env")
+        for var in early_config.getini("echo_attributes"):
+            yield Entry(var, "attr")
+        for var in early_config.getini("echo_versions"):
+            yield Entry(var, "version")

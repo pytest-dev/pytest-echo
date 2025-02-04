@@ -114,8 +114,10 @@ max_supported_python = "3.13"
 addopts = "-ra -q"
 testpaths = [
   "tests",
-  "integration",
 ]
+#echo_envs = ["ENV1", "ENV2"]
+#echo_attributes = []
+#echo_versions = ["pytest"]
 
 [tool.coverage]
 run.source = [

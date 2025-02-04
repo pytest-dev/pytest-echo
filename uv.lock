@@ -524,7 +524,7 @@ wheels = [
 
 [[package]]
 name = "pytest-echo"
-version = "1.8.2.dev13+g3450ae3.d20250203"
+version = "1.8.2.dev14+g29a52f5.d20250204"
 source = { editable = "." }
 dependencies = [
     { name = "pytest" },
