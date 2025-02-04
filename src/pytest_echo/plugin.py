@@ -27,7 +27,7 @@ def get_installed_distributions() -> list[tuple[str, str]]:
     """Return a list of installed Distribution objects."""
     try:
         return [(d.name, d.version) for d in meta.distributions()]
-    except (ImportError, AttributeError, TypeError):
+    except (ImportError, AttributeError, TypeError):  # pragma: no cover
         return []
 
 
@@ -142,10 +142,10 @@ def pytest_report_header(config: pytest.Config) -> str | None:
             data.extend(get_version(k))
         ret.append("\n".join([f"    {k}: {v}" for k, v in sorted(data)]))
 
-    if config.option.echo_attribues:
+    if config.option.echo_attributes:
         ret.extend([
             "Inspections:",
-            "\n".join([f"    {k}: {get_module_attribute(k)}" for k in config.option.echo_attribues]),
+            "\n".join([f"    {k}: {get_module_attribute(k)}" for k in config.option.echo_attributes]),
         ])
     if not ret:
         ret = ["pytest-echo: nothing to echoing"]
@@ -192,7 +192,7 @@ def pytest_addoption(parser: pytest.Parser) -> None:
     group.addoption(
         "--echo-attr",
         action="append",
-        dest="echo_attribues",
+        dest="echo_attributes",
         default=[],
         help="attribute to print (full path)",
     )
@@ -208,18 +208,16 @@ def pytest_load_initial_conftests(
     for entry in _load_values(early_config):
         if entry.type in {"env", "envs", "echo_envs"}:
             early_config.option.echo_envs.append(entry.key)
-        if entry.type in {"attr", "attribute", "echo_attribute"}:
+        if entry.type in {"attr", "attribute", "echo_attributes"}:
             early_config.option.echo_attributes.append(entry.key)
         if entry.type in {"version", "echo_version"}:
             early_config.option.echo_versions.append(entry.key)
 
 
 def _load_values(early_config: pytest.Config) -> Iterator[Entry]:
-    has_toml_conf = False
-    if not has_toml_conf:
-        for var in early_config.getini("echo_envs"):
-            yield Entry(var, "env")
-        for var in early_config.getini("echo_attributes"):
-            yield Entry(var, "attr")
-        for var in early_config.getini("echo_versions"):
-            yield Entry(var, "version")
+    for var in early_config.getini("echo_envs"):
+        yield Entry(var, "env")
+    for var in early_config.getini("echo_attributes"):
+        yield Entry(var, "attr")
+    for var in early_config.getini("echo_versions"):
+        yield Entry(var, "version")

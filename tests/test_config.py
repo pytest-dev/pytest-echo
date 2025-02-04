@@ -34,11 +34,24 @@ def test_ini_config(
 
 
 @pytest.mark.parametrize(
-    ("toml", "env"),
+    ("toml", "env", "expected"),
     [
         pytest.param(
             '[tool.pytest.ini_options]\necho_envs = ["ENV1", "ENV2", "ENV3"]',
             {"ENV1": "1", "ENV2": "2", "ENV3": "3"},
+            "    ENV2: 2",
+            id="echo environment variables",
+        ),
+        pytest.param(
+            '[tool.pytest.ini_options]\necho_attributes = ["test_echo.ATTR_LIST"]',
+            {},
+            "    test_echo.ATTR_LIST: [11, 12, 13, (21, 22)]",
+            id="echo environment variables",
+        ),
+        pytest.param(
+            '[tool.pytest.ini_options]\necho_versions = ["pytest_echo"]',
+            {},
+            "    pytest_echo: *",
             id="echo environment variables",
         ),
     ],
@@ -47,6 +60,7 @@ def test_toml_config(
     testdir: pytest.Testdir,
     toml: str,
     env: dict[str, str],
+expected: str,
 ) -> None:
     new_env = {
         **env,
@@ -57,5 +71,5 @@ def test_toml_config(
         testdir.makepyfile("""def test_pass(request): pass""")
         testdir.makepyprojecttoml(toml)
         result = testdir.runpytest()
-        result.stdout.fnmatch_lines(["    ENV2: 2"])
+        result.stdout.fnmatch_lines([expected])
     result.assert_outcomes(passed=1)
