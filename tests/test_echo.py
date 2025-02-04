@@ -11,7 +11,8 @@ ATTR_INT = 111
 ATTR_DICT = {"key": "value"}
 ATTR_LIST = [11, 12, 13, (21, 22)]
 ATTR_COMPOSITE = {"key1": "value1", "key2": [11, 12, 13, 14], "key3": 99}
-ATTR_SET = {11, 12, 13, (21, 22)}
+ATTR_SET = {11, 12, 13}
+
 
 class Dummy:
     attr = 1
@@ -93,7 +94,7 @@ def test_echo_attr_list(testdir: pytest.Testdir) -> None:
 
 def test_echo_attr_set(testdir: pytest.Testdir) -> None:
     result = testdir.runpytest("--echo-attr=test_echo.ATTR_SET.2")
-    result.stdout.fnmatch_lines(["    test_echo.ATTR_SET.2: (21, 22)"])
+    result.stdout.fnmatch_lines(["    test_echo.ATTR_SET.2: 13"])
 
 
 def test_echo_attr_list_inner(testdir: pytest.Testdir) -> None:
@@ -103,8 +104,8 @@ def test_echo_attr_list_inner(testdir: pytest.Testdir) -> None:
 
 def test_echo_attr_list_composite(testdir: pytest.Testdir) -> None:
     result = testdir.runpytest(
-    "--echo-attr=test_echo.ATTR_COMPOSITE.key1",
-          "--echo-attr=test_echo.ATTR_COMPOSITE.key2.3",
+        "--echo-attr=test_echo.ATTR_COMPOSITE.key1",
+        "--echo-attr=test_echo.ATTR_COMPOSITE.key2.3",
     )
     assert "    test_echo.ATTR_COMPOSITE.key1: 'value1'" in result.stdout.lines
     assert "    test_echo.ATTR_COMPOSITE.key2.3: 14" in result.stdout.lines

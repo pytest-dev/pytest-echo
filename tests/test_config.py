@@ -60,7 +60,7 @@ def test_toml_config(
     testdir: pytest.Testdir,
     toml: str,
     env: dict[str, str],
-expected: str,
+    expected: str,
 ) -> None:
     new_env = {
         **env,
