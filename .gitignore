@@ -11,3 +11,4 @@ docs/_build
 !.github
 !.coveragerc
 !.pre-commit-config.yaml
+Makefile
