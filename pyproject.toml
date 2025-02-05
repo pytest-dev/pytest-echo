@@ -61,6 +61,12 @@ dev = [
   "ruff>=0.9.4",
   "tox>=4.24.1",
 ]
+docs = [
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocs-awesome-pages-plugin",
+    "mkdocstrings-python",
+]
 
 [tool.hatch]
 build.hooks.vcs.version-file = "src/pytest_echo/version.py"
