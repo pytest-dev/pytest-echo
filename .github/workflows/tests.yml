@@ -50,8 +50,8 @@ jobs:
 
       - name: Run test suite
         run: |
-          COV_CMD=$(if [ ${{ matrix.env }} == 3.12 ]; then echo "--cov=pytest_echo --cov-report=xml"; else echo ; fi)
-          tox run --skip-pkg-install -e ${{ matrix.env }} -- $COV_CMD
+          export COV_CMD=$(if [ ${{ matrix.env }} == 3.12 ]; then echo "--cov=pytest_echo --cov-report=xml"; else echo ; fi)
+          tox run --skip-pkg-install -e ${{ matrix.env }} -- ${COV_CMD}
         env:
           PYTEST_ADDOPTS: "-vv --durations=20"
           DIFF_AGAINST: HEAD
