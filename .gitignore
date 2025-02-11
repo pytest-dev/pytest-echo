@@ -11,4 +11,5 @@ docs/_build
 !.github
 !.coveragerc
 !.pre-commit-config.yaml
+!.readthedocs.yaml
 Makefile
