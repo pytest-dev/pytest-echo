@@ -839,7 +839,7 @@ wheels = [
 
 [[package]]
 name = "pytest-echo"
-version = "1.8.2.dev28+gaa1612c.d20250222"
+version = "1.8.2.dev29+g50f6bfb.d20250222"
 source = { editable = "." }
 dependencies = [
     { name = "pytest" },
@@ -863,6 +863,11 @@ dev = [
     { name = "ruff" },
     { name = "tox" },
 ]
+docs = [
+    { name = "mkdocs" },
+    { name = "mkdocs-include-markdown-plugin", version = "6.2.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.9'" },
+    { name = "mkdocs-include-markdown-plugin", version = "7.1.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.9'" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -883,6 +888,10 @@ dev = [
     { name = "pytest-mock", specifier = ">=3.14" },
     { name = "ruff", specifier = ">=0.9.4" },
     { name = "tox", specifier = ">=4.24.1" },
+]
+docs = [
+    { name = "mkdocs", specifier = ">=1.6.1" },
+    { name = "mkdocs-include-markdown-plugin", specifier = ">=6.2.2" },
 ]
 
 [[package]]
