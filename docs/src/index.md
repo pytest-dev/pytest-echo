@@ -1,3 +1,3 @@
 {%
-    include-markdown '../../readme.md'
+    include-markdown '../../README.md'
 %}

@@ -6,7 +6,7 @@ versions](https://img.shields.io/pypi/pyversions/pytest-echo.svg)](https://pypi.
 [![tests](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yml/badge.svg)](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yml)
 [![Downloads](https://static.pepy.tech/badge/pytest-echo/month)](https://pepy.tech/project/pytest-echo)
 [![Coverage](https://codecov.io/gh/pytest-dev/pytest-echo/branch/develop/graph/badge.svg)](https://codecov.io/gh/pytest-dev/pytest-echo)
-[![Documentation](https://github.com/pytest-dev/pytest-echo/actions/workflows/docs.yml/badge.svg)](https://github.com/pytest-dev/pytest-echo/)
+[![Documentation](https://github.com/pytest-dev/pytest-echo/actions/workflows/docs.yml/badge.svg)](https://pytest-dev.github.io/pytest-echo/)
 
 Print environment variables, package version and generic attributes,
 as they are at the beginning of the test.
