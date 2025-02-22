@@ -6,7 +6,7 @@ versions](https://img.shields.io/pypi/pyversions/pytest-echo.svg)](https://pypi.
 [![tests](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yml/badge.svg)](https://github.com/pytest-dev/pytest-echo/actions/workflows/tests.yml)
 [![Downloads](https://static.pepy.tech/badge/pytest-echo/month)](https://pepy.tech/project/pytest-echo)
 [![Coverage](https://codecov.io/gh/pytest-dev/pytest-echo/branch/develop/graph/badge.svg)](https://codecov.io/gh/pytest-dev/pytest-echo)
-[![Documentation](https://readthedocs.org/projects/pytest-echo/badge/?version=latest)](https://pytest-echo.readthedocs.io/en/latest/)
+[![Documentation](https://github.com/pytest-dev/pytest-echo/actions/workflows/docs.yml/badge.svg)](https://github.com/pytest-dev/pytest-echo/)
 
 Print environment variables, package version and generic attributes,
 as they are at the beginning of the test.
@@ -15,15 +15,15 @@ Useful in the continuous integration to dump test
 configuration/environment and or to check if attributes are properly set
 (ie. you change environment with `os.environ`)
 
-# Install
+## Install
 
 install via::
 
     pip install pytest-echo
 
-# Examples
+## Examples
 
-## Dump environment variables
+### Dump environment variables
 
     $ pytest --echo-env=HOME
     ============================= test session starts =========================
@@ -32,7 +32,7 @@ install via::
         HOME: /Users/sax
     plugins: echo, pydev, cov, cache, django
 
-## Dump package version
+### Dump package version
 
     $ pytest --echo-version=pytest_echo
     ============================= test session starts =========================
@@ -48,7 +48,7 @@ install via::
 > level code is executed. This should be not an issue as no problematic code
 > should be present in the first level of the package
 
-## Dump attributes
+### Dump attributes
 
     $ pytest --echo-attr=django.conf.settings.DEBUG
     ============================= test session starts =========================
@@ -63,7 +63,7 @@ install via::
 
 > [!NOTE] You cannot dump callable result.
 
-## Configure via tox.ini/setup.cfg/pytest.cfg
+### Configure via tox.ini/setup.cfg/pytest.cfg
 
 Example of use in a django project:
 
@@ -100,7 +100,7 @@ Example of use in a django project:
     .............
     14 passed in 4.95 seconds
 
-## Globbing
+### Globbing
 
 Starting from version 1.5, is possible to glob packages version and environment variables,
 as:
