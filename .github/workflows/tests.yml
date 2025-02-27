@@ -53,6 +53,7 @@ jobs:
         env:
           PYTEST_ADDOPTS: "-vv --durations=20"
           DIFF_AGAINST: HEAD
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         if: ${{ success() && matrix.python-version == 3.12 }}

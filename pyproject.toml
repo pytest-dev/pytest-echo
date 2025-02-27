@@ -59,6 +59,8 @@ dev = [
   "pdbpp>=0.10.3",
   "pre-commit",
   "pytest>=8.3.4",
+  "pytest-cov>=5",
+  "pytest-echo",
   "pytest-mock>=3.14",
   "ruff>=0.9.4",
   "tox>=4.24.1",
@@ -153,3 +155,6 @@ strict = true
 
 [tool.uv]
 package = true
+
+[tool.uv.sources]
+pytest-echo = { workspace = true }
