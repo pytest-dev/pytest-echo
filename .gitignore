@@ -6,6 +6,7 @@ build
 *.pyc
 __pycache__
 docs/_build
+coverage.xml
 /src/pytest_echo/version.py
 !docs/src/.pages
 !.gitignore
